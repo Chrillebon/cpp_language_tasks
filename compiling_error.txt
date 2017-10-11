@@ -1,0 +1,82 @@
+C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Simon_Says.cpp: In function 'int main()':
+C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Simon_Says.cpp:18:28: error: no match for 'operator-' (operand types are 'std::__cxx11::string {aka std::__cxx11::basic_string<char>}' and 'std::__cxx11::basic_string<char>')
+       std::string rest = M - M.substr(0, 10)
+                          ~~^~~~~~~~~~~~~~~~~
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_algobase.h:67:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\char_traits.h:39,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios:40,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:38,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Simon_Says.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_iterator.h:1193:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorL>&)
+     operator-(const move_iterator<_Iterator>& __x,
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_iterator.h:1193:5: note:   template argument deduction/substitution failed:
+C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Simon_Says.cpp:18:44: note:   'std::__cxx11::string {aka std::__cxx11::basic_string<char>}' is not derived from 'const std::move_iterator<_IteratorL>'
+       std::string rest = M - M.substr(0, 10)
+                                            ^
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_algobase.h:67:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\char_traits.h:39,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios:40,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:38,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Simon_Says.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_iterator.h:1186:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__x.base() - __y.base())) std::operator-(const std::move_iterator<_IteratorL>&, const std::move_iterator<_IteratorR>&)
+     operator-(const move_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_iterator.h:1186:5: note:   template argument deduction/substitution failed:
+C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Simon_Says.cpp:18:44: note:   'std::__cxx11::string {aka std::__cxx11::basic_string<char>}' is not derived from 'const std::move_iterator<_IteratorL>'
+       std::string rest = M - M.substr(0, 10)
+                                            ^
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_algobase.h:67:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\char_traits.h:39,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios:40,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:38,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Simon_Says.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_iterator.h:387:5: note: candidate: template<class _IteratorL, class _IteratorR> decltype ((__y.base() - __x.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_IteratorR>&)
+     operator-(const reverse_iterator<_IteratorL>& __x,
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_iterator.h:387:5: note:   template argument deduction/substitution failed:
+C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Simon_Says.cpp:18:44: note:   'std::__cxx11::string {aka std::__cxx11::basic_string<char>}' is not derived from 'const std::reverse_iterator<_Iterator>'
+       std::string rest = M - M.substr(0, 10)
+                                            ^
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_algobase.h:67:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\char_traits.h:39,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios:40,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:38,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Simon_Says.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_iterator.h:333:5: note: candidate: template<class _Iterator> decltype ((__x.base() - __y.base())) std::operator-(const std::reverse_iterator<_Iterator>&, const std::reverse_iterator<_Iterator>&)
+     operator-(const reverse_iterator<_Iterator>& __x,
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_iterator.h:333:5: note:   template argument deduction/substitution failed:
+C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Simon_Says.cpp:18:44: note:   'std::__cxx11::string {aka std::__cxx11::basic_string<char>}' is not derived from 'const std::reverse_iterator<_Iterator>'
+       std::string rest = M - M.substr(0, 10)
+                                            ^
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_algobase.h:67:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\char_traits.h:39,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios:40,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:38,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Simon_Says.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_iterator.h:959:5: note: candidate: template<class _Iterator, class _Container> typename __gnu_cxx::__normal_iterator<_Iterator, _Container>::difference_type __gnu_cxx::operator-(const __gnu_cxx::__normal_iterator<_Iterator, _Container>&, const __gnu_cxx::__normal_iterator<_Iterator, _Container>&)
+     operator-(const __normal_iterator<_Iterator, _Container>& __lhs,
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_iterator.h:959:5: note:   template argument deduction/substitution failed:
+C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Simon_Says.cpp:18:44: note:   'std::__cxx11::string {aka std::__cxx11::basic_string<char>}' is not derived from 'const __gnu_cxx::__normal_iterator<_Iterator, _Container>'
+       std::string rest = M - M.substr(0, 10)
+                                            ^
+In file included from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_algobase.h:67:0,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\char_traits.h:39,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ios:40,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\ostream:38,
+                 from c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\iostream:39,
+                 from C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Simon_Says.cpp:1:
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_iterator.h:947:5: note: candidate: template<class _IteratorL, class _IteratorR, class _Container> decltype ((__lhs.base() - __rhs.base())) __gnu_cxx::operator-(const __gnu_cxx::__normal_iterator<_IteratorL, _Container>&, const __gnu_cxx::__normal_iterator<_IteratorR, _Container>&)
+     operator-(const __normal_iterator<_IteratorL, _Container>& __lhs,
+     ^~~~~~~~
+c:\mingw\lib\gcc\mingw32\6.3.0\include\c++\bits\stl_iterator.h:947:5: note:   template argument deduction/substitution failed:
+C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Simon_Says.cpp:18:44: note:   'std::__cxx11::string {aka std::__cxx11::basic_string<char>}' is not derived from 'const __gnu_cxx::__normal_iterator<_IteratorL, _Container>'
+       std::string rest = M - M.substr(0, 10)
+                                            ^
