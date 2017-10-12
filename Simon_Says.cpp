@@ -1,27 +1,22 @@
 #include <iostream>
 #include <stdio.h>
 #include <string>
-#include <algorithm>
+
 
 int main()
 {
   int N;
-  std::string M;
-
-  scanf("%d", &N);
+  char M[100];
+  scanf("%d \n", &N);
 
   for(int i = 0; i < N; i++)
   {
-    scanf (" %[^\n]%*c", M);
-    std::cout << "dette er svaret: " << M << '\n';
-    if (M.substr(0, 10) == "Simon says");
+    fgets(M, 100, stdin);
+    std::string M1(M);
+    if (M1.substr(0, 10) == "Simon says")
     {
-      std::string rest = M - M.substr(0, 10)
-      std::cout << rest << '\n';
-      for (unsigned int i = 0; i < strlen(chars); ++i)
-      {
-        M.erase (std::remove(str.begin(), str.end(), chars[i]), str.end());
-      }
+      std::string M2 = M1.erase(0, 11); //sletter alt på nær "simon says"
+      std::cout << M2 << '\n';
     }
   }
   return 0;
