@@ -1,4 +1,13 @@
-C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Uge 43 (1.7)\timebomb.cpp: In function 'int main()':
-C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Uge 43 (1.7)\timebomb.cpp:135:29: error: invalid type argument of unary '*' (have 'int')
-       Result+=single * (10**i);
-                             ^
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\Uge 43 (1.7)\bookingaroom.cpp: In function 'int main()':
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\Uge 43 (1.7)\bookingaroom.cpp:15:8: error: 'std::std' has not been declared
+   std::std::vector<int> v;
+        ^~~
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\Uge 43 (1.7)\bookingaroom.cpp:15:20: error: expected primary-expression before 'int'
+   std::std::vector<int> v;
+                    ^~~
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\Uge 43 (1.7)\bookingaroom.cpp:34:5: error: 'v' was not declared in this scope
+     v.push_back(b);
+     ^
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\Uge 43 (1.7)\bookingaroom.cpp:36:13: error: 'v' was not declared in this scope
+   std::sort(v.begin(),v.begin()+n);
+             ^

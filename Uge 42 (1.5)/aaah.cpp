@@ -9,10 +9,10 @@ int main()
   cin >> Today >> Doctor;
   if(Today.find_first_of("h")>=Doctor.find_first_of("h"))
   {
-    cout << "go" << '\n';
+    cout << "go" << endl;
   }
   else
   {
-    cout << "no" << '\n';
+    cout << "no" << endl;
   }
 }
