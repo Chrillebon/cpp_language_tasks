@@ -1,6 +1,5 @@
 #include <iostream>
 #include <string>
-#include <string.h>
 #include <vector>
 using namespace std;
 
@@ -10,9 +9,9 @@ vector<int> Arrival(20);
 int sortname(string name)
 {
   for(int i=0;i<20;i++)
-  if(strcmp(name,Names[i]))
+  if(Names[i].compare(name))
   {
-    
+    return i;
   }
 }
 
@@ -22,15 +21,20 @@ int main()
 {
   string What;
 
-  while(std::cin >> What;)
+  while(std::cin >> What)
   {
     if(What == "OPEN")
     {
 
     }
     if(What == "ENTER")
+    {
+
+    }
     if(What == "EXIT")
+    {}
     if(What == "CLOSE")
+    {}
   }
   return 0;
 }
