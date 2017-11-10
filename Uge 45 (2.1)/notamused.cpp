@@ -1,40 +1,44 @@
 #include <iostream>
 #include <string>
-#include <vector>
+#include <map>
+#include <iomanip>
 using namespace std;
-
-vector<string> Names;
-vector<int> Arrival(20);
-
-int sortname(string name)
-{
-  for(int i=0;i<20;i++)
-  if(Names[i].compare(name))
-  {
-    return i;
-  }
-}
-
 
 
 int main()
 {
   string What;
+  string Who;
+  int When, n,Day=0;
+  map<string, float> Names;
 
   while(std::cin >> What)
   {
     if(What == "OPEN")
     {
-
+      Day+=1;
+      Names.erase ( Names.begin(), Names.end() );
     }
     if(What == "ENTER")
     {
-
+      std::cin >> Who >> When;
+      if(Names[Who]) Names[Who] -= When;
+      else Names[Who] = -When;
     }
     if(What == "EXIT")
-    {}
+    {
+      std::cin >> Who >> When;
+      Names[Who] += When;
+    }
     if(What == "CLOSE")
-    {}
+    {
+      std::cout << "Day " <<Day<< '\n';
+      for(map<string,float>::iterator itr = Names.begin();itr!=Names.end();itr++)
+      {
+        std::cout << itr->first <<" $"<< fixed << setprecision(2) << itr->second*0.1 << '\n';
+      }
+      std::cout << '\n';
+    }
   }
   return 0;
 }
