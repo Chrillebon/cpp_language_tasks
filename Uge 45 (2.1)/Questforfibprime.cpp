@@ -12,7 +12,7 @@ int main()
   outfile.open("5000_primes_lenght.txt");
   for(int i=0;i<MAX;i++)
   {
-    scanf("%5s %29s %li %29[-0-9a-zA-Z? ]", , , &digits, );
+    scanf("%5s %29s %li %29[-0-9a-zA-Z? ]", decoy, decoy, &digits, decoy);
     if(! digits > 0)
     {
       MAX++;
