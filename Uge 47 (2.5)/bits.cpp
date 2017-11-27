@@ -20,6 +20,7 @@ int Resultat(char number[11])
   {
     if(number[o]=='\0') break;
     int tal = number[o]-48;
+    std::cout << "tal = number[o]: " <<tal<<" = "<<number[o]<< '\n';
     //åndsvag "-48" bug igen...
     X*=10;
     X+=tal;
@@ -38,7 +39,7 @@ int main()
     long X=0;
     char number[11];
     int Result=0;
-    std::cin >> number;
+    std::cin >> number; //94: 9 4 '\0'
     std::cout << Resultat(number) << '\n';
   }
   return 0;
