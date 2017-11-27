@@ -1,20 +1,20 @@
 #include <iostream>
-#include <cmath>
 #include <math.h>
 
 int main()
 {
-  int H,Time,v;
+  int Time;
+  float H,v,factor;
 
-  std::cin >> H,v;
-  std::cout << "v er lig med: " <<v<< '\n';
+  std::cin >> H>>v;
   if(v<=180)
   {
     std::cout << "safe" << '\n';
   }
   else
   {
-    Time=abs(H/cos((v/180)*M_PI));
+    factor = H/sin((v/180)*M_PI);
+    Time=abs(factor);
     std::cout << Time << '\n';
   }
   return 0;
