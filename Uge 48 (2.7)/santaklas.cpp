@@ -4,17 +4,18 @@
 int main()
 {
   int Time;
-  float H,v,factor;
+  float H, v, factor;
 
-  std::cin >> H>>v;
+  std::cin >> H >> v;
   if(v<=180)
   {
     std::cout << "safe" << '\n';
   }
   else
   {
-    factor = H/sin((v/180)*M_PI);
-    Time=abs(factor);
+    factor = H / sin( (v / 180) *
+    M_PI);
+    Time = abs(factor);
     std::cout << Time << '\n';
   }
   return 0;
