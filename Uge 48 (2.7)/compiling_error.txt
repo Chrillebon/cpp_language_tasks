@@ -1,0 +1,5 @@
+C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Uge 48 (2.7)\secretsanta.cpp: In function 'float output(float, float)':
+C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Uge 48 (2.7)\secretsanta.cpp:6:26: error: expected primary-expression before 'return'
+   val = 1/n*1+(1-1/n)*(1+return output(n-1,val));
+                          ^~~~~~
+C:\Users\Chrillebon\Documents\GitHub\c_language_tasks\Uge 48 (2.7)\secretsanta.cpp:6:26: error: expected ')' before 'return'
