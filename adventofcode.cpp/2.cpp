@@ -24,7 +24,9 @@
   return 0;
 }*/
 
-int numbers[17]{}, sum = 0;
+int numbers[17]{};
+float gonow = 1.0;
+int sum = 0, gozero = 0;
 
 int tal(int u)
 {
@@ -33,11 +35,13 @@ int tal(int u)
     for(int p=0;p<16;p++)
     {
       int mod = 0;
-      std::cout << "numbers[u] og numbers[p]: "<<u<<": "<<numbers[u]<<" og "<<p<<": "<<numbers[p] << '\n';
       //mod = (numbers[u]%numbers[p]);
-      if((numbers[u]%numbers[p])/*==mod*/ && u!=p)
+      gozero = numbers[u]%numbers[p];
+      gonow = 1.0*(numbers[u]%numbers[p]);
+      std::cout << "numbers[u] og numbers[p] and rest: "<<u<<": "<<numbers[u]<<" og "<<p<<": "<<numbers[p] <<" og resten: "<<gonow<<" og "<< gozero<< '\n';
+      if(gonow==0 && u!=p)//&& gozero==gonow
       {
-        std::cout << "del: " <<numbers[u]%numbers[p]<< '\n';
+        std::cout << "del: " <<numbers[u]/numbers[p]<< '\n';
         return numbers[u]/numbers[p];
       }
     }
