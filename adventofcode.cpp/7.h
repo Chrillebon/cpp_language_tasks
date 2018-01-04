@@ -1,23 +1,35 @@
 //7.h
 
-const char** explode(const string& s, const char& c)
+void explode(const string& s, char* t[20], const char& c)
 {
 	string buff{""};
-	char v[8][20]{};
+	//char v[8][20]{};
   int words=0;
 
 	for(auto n:s)
 	{
-		if(n != c) { buff+=n; } else
-		if(n == c && buff != "") { v[words]=buff; buff = ""; words++; }
+		if(n != c || n != ',' || n != '-' || n != '>')
+		{
+			buff+=n;
+			int nn = n;
+			int cc = c;
+			int nc = n == c && buff != "";
+			std::cout << "buff: " <<buff<<" og n: "<<nn<<" og c: "<<cc<<" og if-statement: "<<nc<< '\n';
+		}
+		if(n == c && buff != "")
+		{
+			std::cout << "test" << '\n';
+			t[words] = strdup(buff.c_str());
+			buff = "";
+			words++;
+		}
 	}
 	if(buff != "")
 	{
-		v[words]=buff;
+		t[words] = strdup(buff.c_str());
 		//std::cout << "Den slutter med: " <<buff<< '\n';
 	}
-
-	return v;
+	//return v;
 }
 
 class Towers
@@ -31,22 +43,19 @@ public:
 private:
   char Name [20];
   int Weight = 17;
-  char names[8][20]{};
+  char* names[20]{};
 };
 
 Towers::Towers()
 {
-  //std::cout << "Så langt så godt: "<<Name<< '\n';
-  char mem1[100]
-  char mem[8][20]{};
+  std::cout << "Så langt så godt: "<<Name<< '\n';
+  char mem1[100];
+  //char mem[8][20]{};
   scanf("%s (%u) -> %[a-z ,]", Name, &Weight, &mem1);
   //scanf("%s (%u) -> %s %s %s %s %s %s %s", Name, &Weight, &mem[0], &mem[1], &mem[2], &mem[3], &mem[4], &mem[5], &mem[6]);
-  for(int i=0;i<100;i++)
-  {
-
-  }
+	explode(mem1, names, ' ');
   //sørg for at bugteste...
-  for(int i=0;i<7;i++)
+  /*for(int i=0;i<7;i++)
   {
     if(mem[i][0] == '\0')
     {
@@ -59,7 +68,7 @@ Towers::Towers()
         names[i][o] = mem[i][o];
       }
     }
-  }
+  }*/
 
   //scanf("%s", Name);
   //std::cin >> Name >> Weight >> names[0] >> names[1] >> names[2] >> names[3] >> names[4] >> names[5] >> names[6];

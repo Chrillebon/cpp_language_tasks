@@ -1,0 +1,4 @@
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\pointertest.cpp: In function 'void pointer(char**)':
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\pointertest.cpp:8:32: error: 'strdup' was not declared in this scope
+   numb[0] = strdup(name.c_str());
+                                ^
