@@ -2,17 +2,20 @@
 #include <string>
 #include <string.h>
 
-void pointer(char* numb[10])
+/*void pointer(char numb[][20])
 {
   std::string name = "asdf";
   numb[0] = strdup(name.c_str());
-}
+}*/
 
 int main()
 {
-  char* numb[10];
-  pointer(numb);
+  char *numb[20];
+  //char *ptr[20] = &numb;
+  //pointer(numb);
   //numb[0] = "asdf";
-  std::cout << numb[0] << '\n';
+  std::string name = "asdf";
+  numb[0] = strdup(name.c_str());
+  std::cout << *numb << '\n';
   return 0;
 }

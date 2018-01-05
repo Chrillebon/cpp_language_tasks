@@ -7,6 +7,7 @@ void explode(const string& s, char* t[20], const char& c)
 
 	for(auto n:s)
 	{
+		//std::cout << "Den forsøger med: " <<n<<" så det giver: "<<buff<< '\n';
 		if(n != c && n != ',' && n != '-' && n != '>')
 		{
 			buff+=n;
@@ -24,11 +25,11 @@ void explode(const string& s, char* t[20], const char& c)
 	if(buff != "")
 	{
 		t[words] = strdup(buff.c_str());
-		t[words+1][0] = '_';
+		t[words+1] = "_";
 	}
 	else
 	{
-		t[words][0] = '_';
+		t[words] = "_";
 	}
 }
 
@@ -42,10 +43,12 @@ public:
   string relation(int);
   int weight();
 	int cont();
+	void cpy(Towers);
+	void stop();
 private:
   char Name [20];
   int Weight;
-  char* names[20]{};
+  char* names[20];
 	int Cont = 1;
 };
 
@@ -62,13 +65,20 @@ Towers::Towers()
 
 void Towers::set(const char * s)
 {
-	char mem1[100];
+	char mem1[100]{'_'};
 	if(sscanf(s, "%s (%d)%[a-z ,->]", Name, &Weight, &mem1) == EOF)
 	{
 		Cont = 0;
 	}
+	if(mem1[0] == '_')
+	{
+		names[0]= "_";
+	}
+	else
+	{
+		explode(mem1, names, ' ');
+	}
   //scanf("%s (%u) -> %s %s %s %s %s %s %s", Name, &Weight, &mem[0], &mem[1], &mem[2], &mem[3], &mem[4], &mem[5], &mem[6]);
-	explode(mem1, names, ' ');
 }
 
 string Towers::name()
@@ -102,4 +112,9 @@ int Towers::weight()
 int Towers::cont()
 {
 	return Cont;
+}
+
+void Towers::stop()
+{
+	Cont = 0;
 }
