@@ -1,66 +1,33 @@
 #include <iostream>
 #include <vector>
+#include <deque>
 using namespace std;
 
-vector < vector< int > > Passengers;
+deque < deque < vector < int > > > Passengers;
 long long BT = 0;
-int l = 0;
-
-/*
-2
-2 2
-a) 1 1
-b) 1 3
-c) 3 2
-
-
-2 0
-1 1
-
-*/
+int group = 0;
 
 void add()
 {
   int pos, t;
   std::cin >> pos >> t;
-  Passengers.push_back({pos, t});
-  for(int i=0; i<l; i++)
+  if(Passengers.size() > group) //Næste gruppe er ikke tom
   {
-    if(Passengers[l-1-i][1] != 0) //Hvis de ikke har sat sig
+    if(pos < Passengers[group].back()[0])//Han skal ind før ham der står op
     {
-      if(pos < Passengers[l-1-i][0])//Han skal ind før ham der står op
-      {
-        if(t <= Passengers[l-1-i][1]) //han bruger mindre eller lig tid på at pakke
-        {
-          Passengers[l-1-i][1] -= t;
-          return;
-        }
-        else // han bruger længere tid på at pakke
-        {
-          BT += Passengers[l-1-i][1];
-          Passengers[l][1] -= Passengers[l-1-i][1];
-          t -= Passengers[l-1-i][1];
-          Passengers[l-1-i][1] = 0;
-          //Videre til næste i for-loopet
-        }
-      }
-      else //Han skal ind efter ham der står op
-      {
-        BT += Passengers[l-1-i][1];
-        Passengers[l-1-i][1] = 0;
-        //Videre til næste i for-loopet
-      }
+      Passengers[group].push_back({pos, t});
+    }
+    else
+    {
+      group++;
+      Passengers.resize(group+1);
+      Passengers[group].push_back({pos, t});
     }
   }
-  //Han må være forreste der står op
-  //Gør ikke noget
-}
-
-void addrest(int n)
-{
-  for(int i=0; i<n; i++)//Går alle igennem
+  else //Næste gruppe er tom
   {
-    BT += Passengers[i][1]; //lægger resten, der står og venter, til
+    Passengers.resize(group+1);
+    Passengers[group].push_back({pos, t});
   }
 }
 
@@ -72,21 +39,62 @@ int main()
   for(int i=0; i<n; i++)
   {
     add();
-    //-----------CMD--------------
-/*
-    std::cout << "Start:" << '\n';
-    for(int i=0;i<=l;i++)
-    {
-      std::cout << Passengers[i][0] <<" og "<< Passengers[i][1]<<'\n';
-    }
-    std::cout << "BT: " <<BT<< '\n';
-*/
-    //-----------CMD--------------
-    l++;
   }
-  l--;
-  //Så tager jeg resten
-  addrest(n);
-  std::cout << BT << '\n';
+  //------LOGIK-------
+  while(1)
+  {
+    int PT = Passengers[0].back()[1];
+    BT += PT; //Lægger deres tid til boarding tiden
+    Passengers[0].pop_back();
+    if(!Passengers[0].empty())
+    {
+      for(int i=0; i<Passengers[0].size(); i++)
+      {
+        Passengers[0][i][1] -= PT;
+        if(Passengers[0][i][1] <= 0) // Må ikke komme under 0
+        {
+          Passengers[0].erase(Passengers[0].begin()+i); //fjerne i'ende person
+          i--; //Den skal ikke springe personer over
+        }
+      }
+    }
+    if(Passengers[0].empty())
+    {
+      Passengers.pop_front();
+    }
+    else
+    {
+      while(1) //Checker, om der nu kan komme flere ind i gruppen
+      {
+        if(!Passengers[0+1].empty())
+        {
+          if(Passengers[0+1].front()[0] < Passengers[0].back()[0]) // De kan pakke samtidigt, hele den næste gruppe
+          {
+            Passengers[0].push_back({Passengers[0+1].front()[0], Passengers[0+1].front()[1]}); //De rykker deque
+            Passengers[0+1].pop_front(); //Fjerner dem fra anden deque
+          }
+          else
+          {
+            break;
+          }
+        }
+        else if(Passengers.size() > 1)// Hvis man tømmer gruppen ved at rykke den
+        {
+          Passengers.erase(Passengers.begin()+1); //remove 2'nd deque
+          break;
+        }
+        else// Hvis man tømmer den sidste anden gruppe ved at rykke den
+        {
+          break;
+        }
+      }
+    }
+    if(Passengers.size() <= 0)
+    {
+      break;
+    }
+  }
+  //-----LOGIK-----
+  std::cout << BT << '\n'; //resultat
   return 0;
 }
