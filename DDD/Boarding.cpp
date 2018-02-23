@@ -5,7 +5,7 @@ using namespace std;
 
 deque < deque < vector < int > > > Passengers;
 long long BT = 0;
-int group = 0;
+int group = 0, ekstra = 0;
 
 void add()
 {
@@ -15,7 +15,20 @@ void add()
   {
     if(pos < Passengers[group].back()[0])//Han skal ind før ham der står op
     {
-      Passengers[group].push_back({pos, t});
+      for(int i=1; i<=group; i++)
+      {
+        if(pos < Passengers[group-1].back()[0]) //Han skal også ind før ham der er i næste gruppe
+        {
+          ekstra += t; //Hvis man springer over bliver man til et spøgelse
+          return;
+        }/*
+        if(!(pos < Passengers[group-i].back()[0]) )
+        {
+          Passengers[group-i+1].push_back({pos, t});
+          return;
+        }*/
+      }
+      Passengers[group].push_back({pos, t}); //Ellers er man stadig menneske
     }
     else
     {
@@ -45,6 +58,7 @@ int main()
   {
     int PT = Passengers[0].back()[1];
     BT += PT; //Lægger deres tid til boarding tiden
+    ekstra -= PT;
     Passengers[0].pop_back();
     if(!Passengers[0].empty())
     {
