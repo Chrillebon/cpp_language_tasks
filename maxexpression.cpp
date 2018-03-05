@@ -23,6 +23,54 @@ int minussum(std::vector<int> vec)
   return sum;
 }
 
+long long calcrest(std::vector<int> vec, std::vector<long int> result, int start, int zero, int one, int two, long long minus)
+{
+  int where = start;
+  //if(vec[where] > two && vec[where] <= two+one)
+  result[where] *= pow(2, two);
+  one -= vec[where] - two;
+  vec[where] = 0;
+  two = 0;
+
+  //Plus 0
+  where = 0;
+  while(zero) //Fyld med 0-taller
+  {
+    if(vec[where]) //Hvis der er mere plads i dette led, fylder ud
+    {
+      zero--;
+      result[where] *= 0;
+      vec[where]--;
+    }
+    else //Hvis ikke
+    {
+      where++; //Gå videre til næste
+    }
+  }
+
+  //Så skal vi til at regne summen ud:
+  long long sum=0;
+  for(int i=0; i<vec.size(); i++)
+  {
+    sum += result[i];
+  }
+  sum -= minus;
+  return sum;
+}
+
+long long findlargest(std::vector<long long> finalpos) //Finder største resultat af alle mulige
+{
+  int result = finalpos[0];
+  for(int i=1; i<finalpos.size(); i++)
+  {
+    if(finalpos[i] > result)
+    {
+      result = finalpos[i];
+    }
+  }
+  return result;
+}
+
 int main()
 {
   int n, p=1, m=0;
@@ -94,9 +142,6 @@ int main()
   std::cin >> numb[1];
   std::cin >> numb[2];
 
-
-
-
   int count=0;
   //------------STARTER MED MINUS-------------
   //Minus 0
@@ -167,9 +212,7 @@ int main()
         Insertone.pop(); //Skal også fjerne den øverste, ellers lægger den bare den øverste til mange gange...
       }
     }
-    //sort(Minus.begin(), Minus.end(), std::greater<int>());
 
-    //FIX MAKE IT STOOOP
     //Minus 1
     count = 0;
     while(numb[1] && count <= Minus.size() - 1) //Hvis der er flere 1-taller
@@ -192,19 +235,9 @@ int main()
     {
       if(Minus[count]) //Hvis der er mere plads i dette led, fylder ud
       {
-
-
-
         numb[2]--;
         MinusResult[count] *= 2;
         Minus[count]--;
-
-        /*
-        std::cout<<"2's left: "<<numb[2]<<"\n";
-        std::cout<<"link size: "<<Minus[count]<<"\n";
-        std::cout<<"link: "<<count<<"\n";
-        std::cout<<"value: "<<MinusResult[count]<<"\n";
-        */
       }
       else //Hvis ikke
       {
@@ -213,10 +246,16 @@ int main()
     }
   }
 
-
+  //Så skal vi til at regne summen ud:
+  long long sum=0;
+  for(int i=0; i<Minus.size(); i++)
+  {
+    sum -= MinusResult[i];
+  }
 
   //-------------VIDERE TIL PLUS----------------
   //Plus 2
+  std::vector<long long> PosRes;
   count = Plus.size()-1;
   while(numb[2])
   {
@@ -225,15 +264,43 @@ int main()
       PlusResult[count] *= pow(2, numb[2]);
       Plus[count] = 0;
       numb[2] = 0;
+      //Should end after this
     }
-    else if(Plus[count] > numb[2] && Plus[count] <= numb[2]+numb[1]) //Mindre numb[2], men kan være der med numb[1]
+    else if(Plus[count] > numb[2] && Plus[count] <= numb[2]+numb[1] && numb[0]) //Mindre numb[2], men kan være der med numb[1], flere numb[0]
+    {
+      PosRes.push_back(calcrest(Plus, PlusResult, count, numb[0], numb[1], numb[2], sum)); //Tilføger mulighed til vector
+      while(Plus[count]) //Fyld denne ud med mest andet end 2-taller
+      {
+        if(numb[0]) //Flere 0-taller
+        {
+          PlusResult[count] *= 0;
+          Plus[count]--;
+          numb[0]--;
+        }
+        else if(numb[1]) //Ikke flere 0-taller, men flere 1-taller
+        {
+          //Ganger med 1
+          Plus[count]--;
+          numb[1]--;
+        }
+        else //Ikke mere af de andre, kun numb[2]
+        {
+          PlusResult[count] *= 2;
+          Plus[count]--;
+          numb[2]--;
+        }
+      }
+      count = Plus.size()-1; //resetter count, så den begynder forfra
+    }
+    else if(Plus[count] > numb[2] && Plus[count] <= numb[2]+numb[1]) //Mindre numb[2], men kan være der med numb[1], ingen numb[0]
     {
       PlusResult[count] *= pow(2, numb[2]);
       numb[1] -= Plus[count] - numb[2];
       Plus[count] = 0;
       numb[2] = 0;
+      //Should end after this
     }
-    else if(Plus[count] > numb[2] | count < 0) //Mindre numb[2], eller forbi den sidste
+    else if(Plus[count] > numb[2] | count < 0 | Plus[count] == 0) //Mindre numb[2], eller forbi den sidste
     {
       count++; //Gå en tilbage
       while(!Plus[count]) //Hvis denne er fyldt, gå videre.
@@ -250,6 +317,7 @@ int main()
       count--;
     }
   }
+
   //Plus 0
   count = 0;
   while(numb[0]) //Fyld med 0-taller
@@ -267,16 +335,12 @@ int main()
   }
 
   //Så skal vi til at regne summen ud:
-  long long sum=0;
   for(int i=0; i<Plus.size(); i++)
   {
     sum += PlusResult[i];
   }
-  for(int i=0; i<Minus.size(); i++)
-  {
-    sum -= MinusResult[i];
-  }
-  std::cout << sum << '\n';
+  PosRes.push_back(sum);
   //Udregn sum
+  std::cout << findlargest(PosRes) << '\n';
   return 0;
 }
