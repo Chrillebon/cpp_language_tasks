@@ -54,7 +54,7 @@ long long calcrest(std::vector<int> vec, std::vector<long int> result, int start
   {
     sum += result[i];
   }
-  sum -= minus;
+  sum += minus;
   return sum;
 }
 
