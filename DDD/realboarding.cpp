@@ -4,10 +4,10 @@
 #include <algorithm>
 #include <queue>
 using namespace std;
-
+ 
 struct PointerComparator {
   bool operator() (int *arg1, int *arg2) {
-    return *arg1 > *arg2; //calls your operator 
+    return *arg1 > *arg2; //calls your operator
   }
 };
 
