@@ -5,6 +5,12 @@
 #include <queue>
 using namespace std;
 
+struct PointerComparator {
+  bool operator() (int *arg1, int *arg2) {
+    return *arg1 > *arg2; //calls your operator
+  }
+};
+
 /*class segmenttree
 {
 public:
@@ -33,9 +39,9 @@ int * /*segmenttree::*/start(int arr[], int length)
 {
   int height = ceil(log2(length)); //Højden af træet
   int max = 2*pow(2, height) - 1; //max størrelsen af træet
-  int *tree = new int[max]; //Laver arrayet
+  int *tree = new int[max]{}; //Laver arrayet
   //segmenttree::constructor(arr, 0, length-1, tree, 0); //Indsætter alle værdier
-  //return tree; //returnerer
+  return tree; //returnerer
 }
 
 /*int segmenttree::constructor(arr[], start, end, *tree, index)
@@ -59,7 +65,8 @@ int /*segmenttree::*/getmiddle(int start, int end)
 
 void /*segmenttree::*/insert(int *tree, int start, int end, int target, int val, int index)
 {
-  if(index < start || index > end) //Så er vi uden for grænserne
+  //std::cout << "Insert: Start: " <<start<<", end: "<<end<<" og target: "<<target<<" samt index: "<<index<< '\n';
+  if(target < start || target > end) //Så er vi uden for grænserne
   {
     return;
   }
@@ -84,39 +91,67 @@ int /*segmenttree::*/largest(int *tree, int start, int end, int qstart, int qend
   }
   int middle = getmiddle(start, end); //Finder midten
   //returnerer største værdi af værdier under den
-  return  max(largest(tree, start, middle, qstart, qend, 2*index+1),
-              largest(tree, middle+1, end, qstart, qend, 2*index+2));
+  return max(largest(tree, middle+1, end, qstart, qend, 2*index+2),
+             largest(tree, start, middle, qstart, qend, 2*index+1));
 }
 
 int segtop(int *tree, int length)
 {
-  return tree[getmiddle(0, segsize(length))];
+  return tree[getmiddle(0, length)];
 }
 
 int main()
 {
   int N, r, t;
   std::cin >> N;
-  int numbers[N]{};
+  int max = segsize(N);
+  int numbers[N];
+  fill(&numbers[0],&numbers[N], 0);
   int *tree = /*segmenttree::*/start(numbers, N); //Laver træet
-  priority_queue<vector<int>> people;
+  vector<vector<int>> people(N, vector<int>(2));
+  priority_queue<int*, vector<int*>, PointerComparator> move_forward;
   for(int i=0; i<N; i++)
   {
     std::cin >> r >> t;
-    people.push({r,t});
+    people[i][0] = r;
+    people[i][1] = t;
+    move_forward.push(&people[i][0]);
   }
   int last = 0, change_to = -1;
   for(int i=0; i<N; i++)
   {
-    if(last != people.top()[0])
+    if(last != *move_forward.top())
     {
       change_to++;
-      last = people.top()[0];
+      last = *move_forward.top();
     }
-    /*segmenttree::*/insert(tree, 0, change_to, change_to, people.top()[1], 0);
-    people.pop();
+    *move_forward.top() = change_to;
+    move_forward.pop();
   }
-  int middle = getmiddle(0, segsize(N));
-  std::cout << segtop(tree, N);
+  /*//--------CMD-----------
+  for(int i=0; i<N; i++)
+  {
+    std::cout << people[i][0] <<" og "<<people[i][1]<< '\n';
+  }
+  //--------CMD-----------*/
+  for(int i=0; i<N; i++)
+  {
+    //std::cout << "couter: " <<people[i][0]<<" og "<<people[i][1]<< '\n';
+    /*segmenttree::*/insert(tree, 0, N, people[i][0], people[i][1] + largest(tree, 0, N, 0, people[i][0], 0), 0);
+  }
+  /*
+  //---------CMD---------
+  for(int i=0; i<N; i++)
+  {
+    std::cout << people[i][0] <<" og "<<people[i][1]<< '\n';
+  }
+  //----------CMD---------
+  //int middle = getmiddle(0, segsize(N));
+  for(int i=0; i<max; i++)
+  {
+    std::cout << tree[i] << " ";
+  }
+  std::cout << '\n';*/
+  std::cout << tree[0];
   return 0;
 }
