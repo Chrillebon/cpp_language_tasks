@@ -7,7 +7,7 @@ using namespace std;
 
 struct PointerComparator {
   bool operator() (int *arg1, int *arg2) {
-    return *arg1 > *arg2; //calls your operator
+    return *arg1 > *arg2; //calls your operator 
   }
 };
 
@@ -20,7 +20,7 @@ public:
   int getmiddle(int, int);
   void insert(int*, int, int, int, int, int);
   int largest(int*, int, int, int, int, int);
-/*private: 
+/*private:
 };
 
 /*segmenttree::segmenttree()
