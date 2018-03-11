@@ -20,7 +20,7 @@ public:
   int getmiddle(int, int);
   void insert(int*, int, int, int, int, int);
   int largest(int*, int, int, int, int, int);
-/*private:
+/*private: 
 };
 
 /*segmenttree::segmenttree()
