@@ -11,7 +11,6 @@ int getthird(int start, int end)
 
 void insert(int *tree, int start, int end, int *instruction, int val, int index, int depth)
 {
-  std::cout << "test: " <<index<< '\n';
   tree[index] = val;
   if(instruction[depth] == 0)
   {

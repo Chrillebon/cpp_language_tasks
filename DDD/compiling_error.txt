@@ -1,0 +1,46 @@
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp: In member function 'void Tree::add(char*, int, int)':
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:25:14: error: request for member 'bestval' in '((Tree*)this)->Tree::minus', which is of pointer type 'Tree*' (maybe you meant to use '->' ?)
+     if(minus.bestval != NULL)
+              ^~~~~~~
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:27:15: error: cannot convert 'Tree' to 'Tree*' in assignment
+       minus = child;
+               ^~~~~
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:31:15: error: no match for 'operator=' (operand types are 'Tree' and 'Tree*')
+       child = minus;
+               ^~~~~
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:4:7: note: candidate: constexpr Tree& Tree::operator=(const Tree&)
+ class Tree
+       ^~~~
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:4:7: note:   no known conversion for argument 1 from 'Tree*' to 'const Tree&'
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:4:7: note: candidate: constexpr Tree& Tree::operator=(Tree&&)
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:4:7: note:   no known conversion for argument 1 from 'Tree*' to 'Tree&&'
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:36:13: error: request for member 'bestval' in '((Tree*)this)->Tree::zero', which is of pointer type 'Tree*' (maybe you meant to use '->' ?)
+     if(zero.bestval != NULL)
+             ^~~~~~~
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:38:14: error: cannot convert 'Tree' to 'Tree*' in assignment
+       zero = child;
+              ^~~~~
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:42:15: error: no match for 'operator=' (operand types are 'Tree' and 'Tree*')
+       child = zero;
+               ^~~~
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:4:7: note: candidate: constexpr Tree& Tree::operator=(const Tree&)
+ class Tree
+       ^~~~
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:4:7: note:   no known conversion for argument 1 from 'Tree*' to 'const Tree&'
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:4:7: note: candidate: constexpr Tree& Tree::operator=(Tree&&)
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:4:7: note:   no known conversion for argument 1 from 'Tree*' to 'Tree&&'
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:47:13: error: request for member 'bestval' in '((Tree*)this)->Tree::plus', which is of pointer type 'Tree*' (maybe you meant to use '->' ?)
+     if(plus.bestval != NULL)
+             ^~~~~~~
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:49:14: error: cannot convert 'Tree' to 'Tree*' in assignment
+       plus = child;
+              ^~~~~
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:53:15: error: no match for 'operator=' (operand types are 'Tree' and 'Tree*')
+       child = plus;
+               ^~~~
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:4:7: note: candidate: constexpr Tree& Tree::operator=(const Tree&)
+ class Tree
+       ^~~~
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:4:7: note:   no known conversion for argument 1 from 'Tree*' to 'const Tree&'
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:4:7: note: candidate: constexpr Tree& Tree::operator=(Tree&&)
+C:\Users\chri94f2\Documents\GitHub\cpp_language_tasks\DDD\newskiapp.cpp:4:7: note:   no known conversion for argument 1 from 'Tree*' to 'Tree&&'
