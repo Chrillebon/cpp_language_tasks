@@ -37,7 +37,7 @@ int main()
     {
       if(firstresult == 0)
       {
-        firstresult = result[i-1];
+        firstresult = result[i];
       }
       result[i] == 1;
       what = necklace[i];
@@ -50,7 +50,7 @@ int main()
   int size = 0;
   int largest = 0;
   int turn = 0;
-  for(int i=0;i<n;i++)
+  for(int i=1;i<n;i++)
   {
     if(result[i] < size)
     {
@@ -70,6 +70,16 @@ int main()
       size++;
     }
   }
+  for(int i=1;i<n;i++)
+  {
+    std::cout << necklace[i] << " ";
+  }
+  std::cout << '\n';
+  for(int i=1;i<n;i++)
+  {
+    std::cout << result[i] << " ";
+  }
+  std::cout << '\n';
   if(first == necklace[n-1] || necklace[n-1] == 21 || first == 21)
   {
     result[n-1] += firstresult;
