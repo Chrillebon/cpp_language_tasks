@@ -1,62 +1,82 @@
 #include <iostream>
 using namespace std;
 
+struct node
+{
+  int bestval;
+  node *minus;
+  node *zero;
+  node *plus;
+};
+
 class Tree
 {
 public:
-  void add(char*, int, int);
-  int search();
-  int bestval;
-  Tree *minus;
-  Tree *zero;
-  Tree *plus;
+  Tree();
+  void insert(char*, int, int);
+private:
+  node *child;
 };
 
-void Tree::add(char* slide, int index, int val)
+Tree::Tree()
 {
-  if(slide[index] == '\0')
+  child = NULL;
+}
+
+void Tree::insert(char* slope, int index, int val)
+{
+  if(slope[index] == '\0')
   {
     return;
   }
-  bestval = val;
-  Tree child;
-  if(slide[index] == '-')
+  if(slope[index] == '-')
   {
-    if(minus.bestval != NULL)
+    if(Parent -> minus == NULL)
     {
-      minus = child;
+      Parent -> minus = new node;
+      child = Parent -> minus;
     }
     else
     {
-      child = minus;
+      child = Parent -> minus;
     }
   }
-  if(slide[index] == '0')
+  if(slope[index] == '0')
   {
-    if(zero.bestval != NULL)
+    if(Parent -> zero == NULL)
     {
-      zero = child;
+      Parent -> zero = new node;
+      child = Parent -> zero;
     }
     else
     {
-      child = zero;
+      child = Parent -> zero;
     }
   }
-  if(slide[index] == '+')
+  if(slope[index] == '+')
   {
-    if(plus.bestval != NULL)
+    std::cout << Parent -> plus << '\n';
+    if(Parent -> plus == NULL)
     {
-      plus = child;
+      std::cout << "test1" << '\n';
+      Parent -> plus = new node;
+      child = Parent -> plus;
     }
     else
     {
-      child = plus;
+      std::cout << "test2" << '\n';
+      child = Parent -> plus;
     }
   }
-  child.add(slide, index+1, val);
+  child -> bestval = val;
+  insert(slope, index+1, val);
 }
 
 int main()
 {
+  char test[] = {'+', '-', '-', '+', '+'};
+  struct Tree asdf;
+  asdf.insert(test, 0, 2);
+  std::cout << "test" << '\n';
   return 0;
 }
