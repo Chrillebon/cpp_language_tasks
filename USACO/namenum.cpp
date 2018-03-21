@@ -13,10 +13,10 @@ LANG: C++
 #include <vector>
 using namespace std;
 
-char Phone [8][3] = { {'A', 'B', 'C'}, {'D', 'E', 'F'},
-                 {'G', 'H', 'I'}, {'J', 'K', 'L'},
-                 {'M', 'N', 'O'}, {'P', 'R', 'S'},
-                 {'T', 'U', 'V'}, {'W', 'X', 'Y'}};
+//ifstream dict ("dict.txt");
+ifstream fin ("namenum.in");
+ofstream fout ("namenum.out");
+
 
 struct Node
 {
@@ -24,9 +24,11 @@ struct Node
   Node *children[8] = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
 };
 
+
+
 void insert(Node * Parent, string name, int depth)
 {
-  if(depth == name.size())
+  if(depth == name.size()-1)
   {
     Parent -> posname.push_back(name);
     return;
@@ -46,16 +48,14 @@ void insert(Node * Parent, string name, int depth)
 
 void printval(Node * Parent, int * name, int depth, int length)
 {
-  std::cout << "how goes: " <<name[depth]<< '\n';
   if(depth == length - 1)
   {
-    std::cout << "the end" << '\n';
     //Skriv alle navne
     for(int i=0;i<Parent -> posname.size()-1;i++)
     {
-      cout << Parent -> posname[i] << " ";
+      fout << Parent -> posname[i] << " ";
     }
-    cout << Parent -> posname[Parent -> posname.size() - 1];
+    fout << Parent -> posname[Parent -> posname.size() - 1];
     return;
   }
   //Eller bevæg dig ned ad næste
@@ -64,18 +64,19 @@ void printval(Node * Parent, int * name, int depth, int length)
 
 int main()
 {
-  ifstream dict ("dict.in");
-  ifstream fin ("namenum.in");
-  ofstream fout ("namenum.out");
   Node *root = new Node;
+  insert(root, "GREG", 0);
+  int asdf[] = {4, 7, 3, 1};
+  printval(root, asdf, 0, 4);
+  /*
+
   string temp;
-  while(dict >> temp)
+  while(fin >> temp)
   {
-    std::cout << temp << '\n';
     insert(root, temp, 0);
   }
   int N, length = 0;
-  cin >> N;
+  fin >> N;
   while(1.0*(N / pow(10, length)) >= 1)
   {
     length++;
@@ -86,6 +87,6 @@ int main()
     int power = pow(10,length-1-i);
     number[i] = (N/power % 10)-2;
   }
-  printval(root, number, 0, length);
+  printval(root, number, 0, length);*/
   return 0;
 }
