@@ -1,6 +1,6 @@
 /*
 ID: Christi69
-PROB: palsquare
+PROB: dualpal
 LANG: C++
 */
 
@@ -9,8 +9,8 @@ LANG: C++
 #include <math.h>
 using namespace std;
 
-ifstream fin ("palsquare.in");
-ofstream fout ("palsquare.out");
+ifstream fin ("dualpal.in");
+ofstream fout ("dualpal.out");
 
 int basen [20] = {0}, psize = 0;
 char bvalc[20] = {0};
@@ -69,17 +69,9 @@ int * con(int tenval, int base)
   return basen;
 }
 
-char * sqcon(int tenval, int base)
-{
-  int sqtenval = power(tenval, 2);
-  fill(basen, basen+19, 0);
-  int * bvali = con(sqtenval, base);
-  return itoc(bvali);
-}
-
 bool sq(int tenval, int base)
 {
-  char * arr = sqcon(tenval, base);
+  char * arr = itoc(con(tenval, base));
   for(int i=0;i<psize/2;i++)
   {
     if(arr[i] != arr[psize-1-i])
@@ -90,50 +82,26 @@ bool sq(int tenval, int base)
   return 1;
 }
 
-void print(char * arr)
-{
-  for(int i=0;i<psize;i++)
-  {
-    if(arr[i] > 9)
-    {
-        fout << (char)(arr[i]+55);
-    }
-    else
-    {
-      fout << (char)(arr[i]+48);
-    }
-  }
-}
-
-int btoten(int bbval[], int b)
-{
-  int endval = 0;
-  psize = 0;
-  for(int i=0;i<10;i++)
-  {
-    if(bbval[9-i] && !psize)
-    {
-      psize = i+1;
-    }
-    endval += bbval[9-i]*power(b,9-i);
-  }
-  return endval;
-}
-
 int main()
 {
-  int B, numb = 1;
-  fin >> B;
-  while(numb <= 300)
+  int N, S;
+  fin >> N >> S;
+  while(N)
   {
-    if(sq(numb, B) == 1)
+    int a = 0;
+    S++;
+    for(int i=2;i<=10;i++)
     {
-      print(itoc(con(numb, B)));
-      fout << " ";
-      print(sqcon(numb, B));
-      fout << '\n';
+      if(sq(S, i) && a < 2)
+      {
+        a++;
+      }
     }
-    numb++;
+    if(a >= 2)
+    {
+      fout << S << '\n';
+      N--;
+    }
   }
   return 0;
 }
