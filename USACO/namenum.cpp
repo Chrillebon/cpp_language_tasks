@@ -13,10 +13,9 @@ LANG: C++
 #include <vector>
 using namespace std;
 
-//ifstream dict ("dict.txt");
+ifstream dict ("dict.txt");
 ifstream fin ("namenum.in");
 ofstream fout ("namenum.out");
-
 
 struct Node
 {
@@ -24,21 +23,29 @@ struct Node
   Node *children[8] = {NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
 };
 
-
-
 void insert(Node * Parent, string name, int depth)
 {
-  if(depth == name.size()-1)
-  {
-    Parent -> posname.push_back(name);
-    return;
-  }
   int qcorrect = name[depth];
   if(qcorrect >= 81)
   {
     qcorrect--;
   }
+  if(qcorrect >= 89)
+  {
+    //Skal ikke indsætte Z
+    return;
+  }
   int whereto = (qcorrect - 65) / 3;
+
+  if(depth == name.size()-1)
+  {
+    if(Parent -> children[whereto] == NULL)
+    {
+      Parent -> children[whereto] = new Node;
+    }
+    Parent -> children[whereto] -> posname.push_back(name);
+    return;
+  }
   if(Parent -> children[whereto] == NULL)
   {
     Parent -> children[whereto] = new Node;
@@ -48,14 +55,25 @@ void insert(Node * Parent, string name, int depth)
 
 void printval(Node * Parent, int * name, int depth, int length)
 {
-  if(depth == length - 1)
+  if(depth == length)
   {
     //Skriv alle navne
-    for(int i=0;i<Parent -> posname.size()-1;i++)
+    if(Parent -> posname.size())
     {
-      fout << Parent -> posname[i] << " ";
+      for(int i=0;i<Parent -> posname.size();i++)
+      {
+        fout << Parent -> posname[i] << '\n';
+      }
     }
-    fout << Parent -> posname[Parent -> posname.size() - 1];
+    else
+    {
+      fout << "NONE" << '\n';
+    }
+    return;
+  }
+  if(Parent -> children[name[depth]] == NULL)
+  {
+    fout << "NONE" << '\n';
     return;
   }
   //Eller bevæg dig ned ad næste
@@ -65,17 +83,13 @@ void printval(Node * Parent, int * name, int depth, int length)
 int main()
 {
   Node *root = new Node;
-  insert(root, "GREG", 0);
-  int asdf[] = {4, 7, 3, 1};
-  printval(root, asdf, 0, 4);
-  /*
-
   string temp;
-  while(fin >> temp)
+  while(dict >> temp)
   {
     insert(root, temp, 0);
   }
-  int N, length = 0;
+  dict.close();
+  long long N, length = 0;
   fin >> N;
   while(1.0*(N / pow(10, length)) >= 1)
   {
@@ -84,9 +98,13 @@ int main()
   int number[length]{};
   for(int i=0;i<length;i++)
   {
-    int power = pow(10,length-1-i);
+    long long power = pow(10,(int)(length-1-i));
+    if(power % 10 == 9)
+    {
+      power++;
+    }
     number[i] = (N/power % 10)-2;
   }
-  printval(root, number, 0, length);*/
+  printval(root, number, 0, length);
   return 0;
 }
