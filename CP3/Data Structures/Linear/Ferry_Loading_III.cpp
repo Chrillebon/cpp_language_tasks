@@ -86,5 +86,6 @@ int main()
       std::cout << res[car] << '\n';
     }
   }
+  system("pause");
   return 0;
 }
