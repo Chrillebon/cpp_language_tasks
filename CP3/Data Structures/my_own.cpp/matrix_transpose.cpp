@@ -27,27 +27,29 @@ int main()
     }
 
     //output
-    std::cout << n <<" "<< m <<'\n';
+    cout << n <<" "<< m <<'\n';
     for(int i=0;i<matrix.size();i++)
     {
-      if(matrix[i].size())
+      if(!matrix[i].empty())
       {
-        std::cout << matrix[i].size() << " ";
+        cout << matrix[i].size() << " ";
         for(int o=0;o<matrix[i].size();o++)
         {
-          std::cout << matrix[i][o].first+1 << " ";
+          cout << matrix[i][o].first+1;
+          if(o!= matrix[i].size()-1){cout << " ";}
         }
-        std::cout << '\n';
+        cout << '\n';
         for(int o=0;o<matrix[i].size();o++)
         {
-          std::cout << matrix[i][o].second << " ";
+          cout << matrix[i][o].second;
+          if(o!= matrix[i].size()-1){cout << " ";}
         }
       }
       else
       {
-        std::cout << "0" << '\n';
+        cout << "0" << '\n';
       }
-      std::cout << '\n';
+      cout << '\n';
     }
   }
   return 0;
