@@ -29,7 +29,18 @@ public:
   {
     if(pos == left && pos == right)
     {
-      t[i] = val;
+      if(val == 0)
+      {
+        t[i] = 0;
+      }
+      else if(val>>31) //val er negativ
+      {
+        t[i] = -1;
+      }
+      else //val er positiv og forskellig fra 0
+      {
+        t[i] = 1;
+      }
       return;
     }
     else if(pos > right || pos < left)
@@ -40,7 +51,7 @@ public:
     {
       update((i<<1), pos, val, left, (left+right)/2); //go left, index double
       update((i<<1)+1, pos, val, (left+right)/2+1, right); //go right, index double+1
-      t[i] = t[(i<<1)]*t[(i<<1)+1];
+      t[i] = t[(i<<1)] * t[(i<<1)+1];
     }
   }
 
@@ -64,7 +75,22 @@ public:
     else //Prøv begge veje
     {
       //std::cout << "beta" << left << " "<< start<< " "<< right<<" "<< end <<'\n';
-      return resl((i<<1), start, end, left, (left+right)/2)*resl((i<<1)+1, start, end, (left+right)/2+1, right); //resultatet af begge grene
+      int val1,val2;
+      //resultatet af begge grene
+      val1 = resl((i<<1), start, end, left, (left+right)/2);
+      val2 = resl((i<<1)+1, start, end, (left+right)/2+1, right);
+      if(val1 == 0 || val2 == 0)
+      {
+        return 0;
+      }
+      else if((val1>>31) == (val2>>31)) //Hvis de har ens fortegn (plus/minus) som er den første bit i init
+      {
+        return 1;
+      }
+      else
+      {
+        return -1;
+      }
     }
   }
 
@@ -102,18 +128,19 @@ int main()
         val = seq.result(start-1, end-1);
         if(val == 0)
         {
-          std::cout << "0" << '\n';
+          std::cout << "0";
         }
         else if(val > 0)
         {
-          std::cout << "+" << '\n';
+          std::cout << "+";
         }
         else
         {
-          std::cout << "-" << '\n';
+          std::cout << "-";
         }
       }
     }
+    std::cout << '\n';
   }
   return 0;
 }
