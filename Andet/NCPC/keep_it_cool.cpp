@@ -37,10 +37,21 @@ int main()
     space++;
   }
   result[sorted[space-1]] -= (filled - n); // trækker overindlæg fra
-  
-  for(int i=0;i<s;i++)
+  int lucky=0; //how many students are lucky
+  for(;space<s;space++)
   {
-    std::cout << result[i] << '\n';
+    lucky += fridge[sorted[space]];
+  }
+  if(lucky < m)
+  {
+    std::cout << "impossible" << '\n';
+  }
+  else
+  {
+    for(int i=0;i<s;i++)
+    {
+      std::cout << result[i] << '\n';
+    }
   }
   return 0;
 }
