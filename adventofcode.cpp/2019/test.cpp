@@ -1,20 +1,15 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <map>
+#include <string>
 using namespace std;
 
-ofstream fout ("output.txt");
-vector<int> list;
-int tmp;
+map<string,pair<int,vector<string>>> test;
 
 int main()
 {
-  while(std::cin >> tmp)
-  {
-    list.push_back(tmp);
-  }
-  for(int i=0;i<list.size();i++)
-  {
-    fout << list[i] <<", ";
-  }
+  string a = "abc";
+  test[a] = pair<int, vector<string>> (1,vector<string>());
+  return 0;
 }
