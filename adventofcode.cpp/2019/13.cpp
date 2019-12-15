@@ -243,10 +243,10 @@ void com(int id)
   else if(parameter[0] == 3) //Tager input
   {
     //std::cout << "c: " <<parameter[3]<<parameter[2]<<parameter[1]<<" "<<parameter[0]<< '\n';
-    //display();
+    display();
     /*list[whatnum(parameter[1]+1, id+1)] = getch();
     list[whatnum(parameter[1]+1, id+1)]-=50; //48 for char, 2 because I wanna steer with 1,2,3, not -1,0,1*/
-    list[whatnum(parameter[1]+1, id+1)] = 0;
+    list[whatnum(parameter[1]+1, id+1)] = 0; //For at vinde spillet, hvis du vil spille spillet, fjern kommentar på dem lige over
     where += 2;
   }
   else if(parameter[0] == 4) //Skriver til skærmen
