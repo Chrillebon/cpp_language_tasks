@@ -4,55 +4,41 @@
 #include <math.h>
 using namespace std;
 
-vector<int> start{3,26,1001,26,-4,26,3,27,1002,27,2,27,1,27,26,
-27,4,27,1001,28,-1,28,1005,28,6,99,0,0,5};
-int tmp, res;
-int where=0, amp = 0;
-pair<int,int> ls = {0,1};
+vector<int> start{3,8,1001,8,10,8,105,1,0,0,21,34,59,68,85,102,183,264,345,426,99999,3,9,101,3,9,9,102,3,9,9,4,9,99,3,9,1002,9,4,9,1001,9,2,9,1002,9,2,9,101,5,9,9,102,5,9,9,4,9,99,3,9,1001,9,4,9,4,9,99,3,9,101,3,9,9,1002,9,2,9,1001,9,5,9,4,9,99,3,9,1002,9,3,9,1001,9,5,9,102,3,9,9,4,9,99,3,9,1001,9,1,9,4,9,3,9,1001,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,102,2,9,9,4,9,3,9,1001,9,2,9,4,9,3,9,101,2,9,9,4,9,3,9,102,2,9,9,4,9,3,9,102,2,9,9,4,9,3,9,101,1,9,9,4,9,3,9,101,1,9,9,4,9,99,3,9,1002,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,1001,9,2,9,4,9,3,9,101,1,9,9,4,9,3,9,1001,9,1,9,4,9,3,9,1002,9,2,9,4,9,3,9,101,2,9,9,4,9,3,9,101,1,9,9,4,9,3,9,101,2,9,9,4,9,99,3,9,1001,9,1,9,4,9,3,9,101,1,9,9,4,9,3,9,102,2,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,1002,9,2,9,4,9,3,9,101,2,9,9,4,9,3,9,1001,9,1,9,4,9,3,9,1001,9,1,9,4,9,3,9,102,2,9,9,4,9,3,9,1001,9,1,9,4,9,99,3,9,1002,9,2,9,4,9,3,9,101,1,9,9,4,9,3,9,1001,9,2,9,4,9,3,9,102,2,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,102,2,9,9,4,9,3,9,1001,9,1,9,4,9,3,9,1002,9,2,9,4,9,3,9,1001,9,2,9,4,9,3,9,101,2,9,9,4,9,99,3,9,1001,9,1,9,4,9,3,9,1002,9,2,9,4,9,3,9,101,2,9,9,4,9,3,9,101,1,9,9,4,9,3,9,1002,9,2,9,4,9,3,9,101,1,9,9,4,9,3,9,102,2,9,9,4,9,3,9,101,1,9,9,4,9,3,9,102,2,9,9,4,9,3,9,101,2,9,9,4,9,99};
+long long tmp, res = 0;
+int amp = 0, no_set = 0;
+vector<int> where(5);
 long long high = -9999;
-vector<int> list;
+vector<vector<long long>> list(5);
 vector<int> parameter(4);
-vector<int> best{-1,-1,-1,-1,-1};
 vector<int> settings{0,0,0,0,0};
-vector<long long> seq{0,0,0,0,0,0};
+vector<int> best(5);
 vector<vector<int>> allopt{{5,6,7,8,9}, {5,6,7,9,8}, {5,6,8,7,9}, {5,6,8,9,7}, {5,6,9,7,8}, {5,6,9,8,7}, {5,7,6,8,9}, {5,7,6,9,8}, {5,7,8,6,9}, {5,7,8,9,6}, {5,7,9,6,8}, {5,7,9,8,6}, {5,8,6,7,9}, {5,8,6,9,7}, {5,8,7,6,9}, {5,8,7,9,6}, {5,8,9,6,7}, {5,8,9,7,6}, {5,9,6,7,8}, {5,9,6,8,7}, {5,9,7,6,8}, {5,9,7,8,6}, {5,9,8,6,7}, {5,9,8,7,6}, {6,5,7,8,9}, {6,5,7,9,8}, {6,5,8,7,9}, {6,5,8,9,7}, {6,5,9,7,8}, {6,5,9,8,7}, {6,7,5,8,9}, {6,7,5,9,8}, {6,7,8,5,9}, {6,7,8,9,5}, {6,7,9,5,8}, {6,7,9,8,5}, {6,8,5,7,9}, {6,8,5,9,7}, {6,8,7,5,9}, {6,8,7,9,5}, {6,8,9,5,7}, {6,8,9,7,5}, {6,9,5,7,8}, {6,9,5,8,7}, {6,9,7,5,8}, {6,9,7,8,5}, {6,9,8,5,7}, {6,9,8,7,5}, {7,5,6,8,9}, {7,5,6,9,8}, {7,5,8,6,9}, {7,5,8,9,6}, {7,5,9,6,8}, {7,5,9,8,6}, {7,6,5,8,9}, {7,6,5,9,8}, {7,6,8,5,9}, {7,6,8,9,5}, {7,6,9,5,8}, {7,6,9,8,5}, {7,8,5,6,9}, {7,8,5,9,6}, {7,8,6,5,9}, {7,8,6,9,5}, {7,8,9,5,6}, {7,8,9,6,5}, {7,9,5,6,8}, {7,9,5,8,6}, {7,9,6,5,8}, {7,9,6,8,5}, {7,9,8,5,6}, {7,9,8,6,5}, {8,5,6,7,9}, {8,5,6,9,7}, {8,5,7,6,9}, {8,5,7,9,6}, {8,5,9,6,7}, {8,5,9,7,6}, {8,6,5,7,9}, {8,6,5,9,7}, {8,6,7,5,9}, {8,6,7,9,5}, {8,6,9,5,7}, {8,6,9,7,5}, {8,7,5,6,9}, {8,7,5,9,6}, {8,7,6,5,9}, {8,7,6,9,5}, {8,7,9,5,6}, {8,7,9,6,5}, {8,9,5,6,7}, {8,9,5,7,6}, {8,9,6,5,7}, {8,9,6,7,5}, {8,9,7,5,6}, {8,9,7,6,5}, {9,5,6,7,8}, {9,5,6,8,7}, {9,5,7,6,8}, {9,5,7,8,6}, {9,5,8,6,7}, {9,5,8,7,6}, {9,6,5,7,8}, {9,6,5,8,7}, {9,6,7,5,8}, {9,6,7,8,5}, {9,6,8,5,7}, {9,6,8,7,5}, {9,7,5,6,8}, {9,7,5,8,6}, {9,7,6,5,8}, {9,7,6,8,5}, {9,7,8,5,6}, {9,7,8,6,5}, {9,8,5,6,7}, {9,8,5,7,6}, {9,8,6,5,7}, {9,8,6,7,5}, {9,8,7,5,6}, {9,8,7,6,5}};
-
-void debug()
-{
-  for(int i=0;i<list.size();i++)
-  {
-    std::cout << list[i]<<",";
-  }
-  std::cout << '\n';
-  std::cout << "Vi er ved: " <<where<< '\n'<<'\n';
-  return;
-}
 
 void restart()
 {
+  res = 0;
+  no_set = 0;
   list.clear();
-  where = 0;
-  for(int i=0;i<start.size();i++)
+  list.resize(5);
+  for(int i=0;i<5;i++)
   {
-    list.push_back(start[i]);
+    where[i] = 0;
+    for(int o=0;o<start.size();o++)
+    {
+      list[i].push_back(start[o]);
+    }
   }
-  for(int i=0;i<6;i++)
-  {
-    seq[i] = 0;
-  }
-  ls.first = 0;
-  ls.second = 1;
   return;
 }
 
 void new_set(int a)
 {
-  seq[1] = 0;
-
-  for(int i=0;i<5;i++)
-  {
-    settings[i] = allopt[a][i];
-  }
+  settings[0] = allopt[a][0];
+  settings[1] = allopt[a][1];
+  settings[2] = allopt[a][2];
+  settings[3] = allopt[a][3];
+  settings[4] = allopt[a][4];
   return;
 }
 
@@ -68,104 +54,98 @@ int whatnum(int par, int id)
 {
   if(par == 0)
   {
-    return list[list[id]];
+    return list[amp][list[amp][id]];
   }
   if(par == 1)
   {
-    return list[id];
+    return list[amp][id];
   }
 }
 
 void com(int id)
 {
-  split(list[id]);
-  //debug();
+  split(list[amp][id]);
   if(parameter[0] == 1)
   {
     //std::cout << "adding " <<list[list[id+1]]<<" med "<<list[list[id+2]]<< '\n';
-    list[list[id+3]] = whatnum(parameter[1], id+1) + whatnum(parameter[2],id+2);
-    where += 4;
+    list[amp][list[amp][id+3]] = whatnum(parameter[1], id+1) + whatnum(parameter[2],id+2);
+    where[amp] += 4;
   }
   else if(parameter[0] == 2)
   {
     //std::cout << "ganger " <<list[list[id+1]]<<" med "<<list[list[id+2]]<< '\n';
-    list[list[id+3]] = whatnum(parameter[1], id+1) * whatnum(parameter[2],id+2);
-    where += 4;
+    list[amp][list[amp][id+3]] = whatnum(parameter[1], id+1) * whatnum(parameter[2],id+2);
+    where[amp] += 4;
   }
   else if(parameter[0] == 3)
   {
-    //std::cout << "læser id: " <<amp<< '\n';
-    if(ls.second == 0 || ls.first >= 5) //Beder om amp-output
+    if(no_set == amp) //Flere indstillinger
     {
-      std::cout << "- ";
-      if(amp >= 5) //feedback loop...
+      list[amp][list[amp][id+1]] = settings[amp];
+      no_set++;
+    }
+    else //Tager et indput
+    {
+      //std::cout << "amp " <<amp<< " tager "<<res<< '\n';
+      list[amp][list[amp][id+1]] = res;
+    }
+    where[amp] += 2;
+  }
+  else if(parameter[0] == 4) //Amp pumping out answer
+  {
+    res = list[amp][list[amp][id+1]];
+    //std::cout << "og skriver " <<res<< '\n';
+    //std::cout << "skriver til: " <<amp+1<< " med "<<list[amp][list[id+1]]<< '\n';
+    where[amp] += 2;
+    if(!(where[amp] == 99 && amp == 4))
+    {
+      amp++; //Videre til den næste amp
+      if(amp == 5)
       {
         amp = 0;
       }
-      if(amp == 0) //amp A tager E
-      {
-        std::cout << seq[4] << '\n';
-        list[list[id+1]] = seq[4];
-      }
-      else
-      {
-        std::cout << seq[amp] << '\n';
-        list[list[id+1]] = seq[amp];
-      }
     }
-    else //Beder om indstillingerne
+    else
     {
-      std::cout << "beder om setting: " <<ls.first<< '\n';
-      list[list[id+1]] = settings[ls.first];
-      ls.first++;
-      ls.second = 0;
+
+      std::cout << "DONE!!!" << '\n';
     }
-    where += 2;
-  }
-  else if(parameter[0] == 4) //No longer cout-ing
-  {
-    //std::cout << "+" << '\n';
-    seq[amp] = list[list[id+1]];
-    std::cout << "gemmer "<<list[list[id+1]]<<" i: " <<amp<< '\n';
-    ls.second = 1;
-    amp++;
-    where += 2;
   }
   else if(parameter[0] == 5)
   {
     if(whatnum(parameter[1], id+1))
     {
-      where = whatnum(parameter[2], id+2);
+      where[amp] = whatnum(parameter[2], id+2);
     }
     else
     {
-      where += 3;
+      where[amp] += 3;
     }
   }
   else if(parameter[0] == 6)
   {
     if(!whatnum(parameter[1], id+1))
     {
-      where = whatnum(parameter[2], id+2);
+      where[amp] = whatnum(parameter[2], id+2);
     }
     else
     {
-      where += 3;
+      where[amp] += 3;
     }
   }
   else if(parameter[0] == 7)
   {
-    list[list[id+3]] = (whatnum(parameter[1], id+1) < whatnum(parameter[2], id+2));
-    where += 4;
+    list[amp][list[amp][id+3]] = (whatnum(parameter[1], id+1) < whatnum(parameter[2], id+2));
+    where[amp] += 4;
   }
   else if(parameter[0] == 8)
   {
-    list[list[id+3]] = (whatnum(parameter[1], id+1) == whatnum(parameter[2], id+2));
-    where += 4;
+    list[amp][list[amp][id+3]] = (whatnum(parameter[1], id+1) == whatnum(parameter[2], id+2));
+    where[amp] += 4;
   }
   else
   {
-    std::cout << "ERROR!!!" << '\n';
+    std::cout << "ERROR!!! " <<parameter[0]<<  '\n';
   }
   return;
 }
@@ -174,25 +154,24 @@ int main()
 {
   for(int i=0;i<120;i++)
   {
-    restart();
     new_set(i);
-    amp = 0;
-    while(list[where] != 99 || where >= list.size())
+    restart();
+    while(list[amp][where[amp]] != 99 || where[amp] >= list[amp].size())
     {
-      com(where);
+      com(where[amp]);
     }
-    if(seq[4] > high)
+    //std::cout << "got: " <<res<< '\n';
+    if(res > high)
     {
-      best[0] = seq[0];
-      best[1] = seq[1];
-      best[2] = seq[2];
-      best[3] = seq[3];
-      best[4] = seq[4];
+      best[0] = settings[0];
+      best[1] = settings[1];
+      best[2] = settings[2];
+      best[3] = settings[3];
+      best[4] = settings[4];
     }
-    std::cout << "Got: " <<seq[4]<< '\n';
-    high = max(high, seq[4]);
+    high = max(high, res);
   }
-  std::cout << "res= " <<high<<" from "<<best[0]<<","<<best[1]<<","<<best[2]<<","<<best[3]<<","<<best[4]<< '\n';
+  std::cout << "res= " <<high<<" from "<<best[0]<<best[1]<<best[2]<<best[3]<<best[4]<< '\n';
 
   return 0;
 }
