@@ -1,0 +1,54 @@
+1)
+
+Associative property:
+
+a(bc)=(ab)c
+
+Denne holder, da udelukkende minus er farlige.
+
+
+
+Fordelings-egenskaben:
+
+a(b+c) = ab + ac
+
+Holder ikke, da hvis c er meget tæt på -b, kommer du i problemer
+Med floats...
+
+
+
+
+2) ------------------------------------
+Opgaver i Writing scientific software:
+
+fil 5_2.c
+
+Altså går den mod 0, og ikke mod 0.5.
+Dette er ikke hvad vi vil have...
+
+
+
+
+fil 5_3.c
+
+Altså skal vi sørge for, at vi ikke overflower...
+
+
+
+fil 5_4.c
+
+Vores udregning af løsninger til andengrads kan
+komme i problemer hvis b²>>4*a*c
+
+Der er altså forskel alt efter om vi er smarte eller ej...
+
+
+
+
+3) ------------------------------------------
+
+Modificerer 5_2.c til 5_2_mod.c
+
+skal bruge round towards zero!
+
+Meget ens output, der går meget længere tid før problemer.
