@@ -1,0 +1,87 @@
+1)
+
+Codejudge lavet, hedder "Arrays.c", "Copying.c",
+   "Pointer_assignment" og "Pointer_dereferencing"
+
+
+
+2) & 3) er quizzes
+
+
+4)
+
+Mere effektiv kode til udregning af gennemsnit
+
+
+
+5)
+
+Indtast "N" double værdier, kopiér dem over
+og print.
+
+
+6)
+
+Udregner variansen ved både one-pass og twopass
+Dette sker i varcalc.c
+For at teste single vs double precision
+skal man ændre float til double og omvendt...
+(i double er problemet fixet!)
+
+
+
+7)
+
+aka sidste opgave med ny summation (Kahan summation)
+Findes i varcalcnew.c
+Giver samme svar, men med en smartere udregning?
+
+Ret vigtigt for meget store n!!!
+
+
+8)
+
+Skal finde relativt konditionstal for følgende summer:
+(Sidste slide for dagens forelæsning)
+
+S1=sum(a_i)
+Kappa(S1) = 1
+
+S2=sum(a_i²)
+Kappa(S2) = 1
+
+S3=S2-1/n*S1²
+Kappa(S3) = 2
+
+
+Da konditionstallet er højere for S3, er det vigtigere her
+Det er ikke så vigtigt generalt for dette datasæt,
+  da vi ikke har negative værdier.
+
+
+
+9)
+
+Worst case rel error:
+sum(abs(x_i)) = 500
+abs(sum(x_i)) = 0.01
+unit-roundoff = u
+n*u < 0.1
+
+formel på slide 18 i lecture:
+
+e_rel = sum(abs(x_i))/abs(sum(x_i)) * (nu/(1+nu))
+=500/0.01 * (0.1/0.9)
+=5555.555555556
+
+Meget stor fejl!!!
+
+
+
+10)
+
+Condition number: f(x)=cos(x)
+
+e_rel = abs(x*f'(x)) / abs(f(x))
+=abs(-x*sin(x))/abs(cos(x))
+=abs(x*sin(x)/cos(x))
