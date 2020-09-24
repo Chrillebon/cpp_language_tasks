@@ -1,0 +1,34 @@
+
+Codejudge:
+
+Softplus burde løses med ligheden:
+
+log(1+exp(x)) = log(exp(x))(exp(-x)+1)
+=x+log(1+exp(-x))
+
+
+Poisson PMF:
+
+log(lambda^k / k! * e^(-lambda))
+= log(lambda^k) - log(k!) - lambda
+= log(lambda*lambda*lambda...) - log(k*k-1*k-2...) - lambda
+= log(lambda)+log(lambda)+log... - log(k)+log(k-1)+log(k-2)... - lambda
+
+for(int i=1;i<=k;i++)
+{
+  logres += log(lambda) - log(i);
+}
+logres -= lambda;
+
+return exp(logres);
+
+
+
+
+Opgave i bogen: 7.1-7.4
+
+
+
+
+Jeg skal stadig tilbage og skrive programmet til allokering af plads
+Jeg har fået makefilen til at virke. 

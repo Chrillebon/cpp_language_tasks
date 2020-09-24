@@ -1,0 +1,62 @@
+""" For at køre programmet skrives følgende """
+
+"make"
+"./running"
+
+
+Hvad sker der? Se følgende:
+
+- - - - - - - - - - - - - - - - - - -
+
+Rent teknisk, hvordan at man reserverer plads
+til et 2D array, se kommentarer under "array.c".
+
+
+Koden køres i "running.c"
+Running.c kører funktioner i en anden fil
+For at lave en oversigt over funktionerne
+	har vi lavet denne oversigt i "array.h".
+	aka prototyper er skrevet ind, så den ved
+	hvad der kommer i "array.c".
+Makefilen er beskrevet neden under:
+
+				|
+				|
+				V
+
+-----------------------------------
+
+CC=gcc
+CPPFLAGS=
+CCFLAGS=-Wall -std=c99
+LDFLAGS=
+LDLIBS=
+
+SOURCES=
+OBJECTS=
+TARGET=
+.PHONY: all
+
+all: running clean
+
+running: array.o
+
+clean:
+	rm -f array *.o
+
+
+------------------------------------
+
+Den kører "all". "all" kræver at både "running" og "clean"
+"running" kræver running.o, så denne oprettes først
+efter vi har oprettet programmet vi skal bruge,
+	fjerner "clean" alle ".o" filer lavet (kan gøres hurtigt
+	for flere filer, hvis flere ".o" filer laves, men her
+	fjernes kun med navn "array.o")
+
+
+
+
+ADVARSEL!!!: Dette er bare én (sikkert grim) måde at køre det
+	på, og der findes sikkert betydeligt bedre metoder,
+	dog virker dette, så...!!!
