@@ -1,0 +1,53 @@
+Skal vi virkeligt høre på Dimitri igen?...
+
+for at få til at virke, skriv:
+
+    $ make OPT=-O3 execute_time
+
+Andre optimeringsmuligheder er 0,1,2,3,s
+som giver ingenting, mest alm, mere, mest, reducer størrelse af exe
+
+Se billede execute_time.png:
+Koden optimerer indtil vi får så meget data, at vi skal tage fat i den i
+et andet cache, så at den fx skal loade til og fra memory. Dette skaber
+Knækket der er tydeligt i billedet. Ville egentligt gerne have haft 3 trin
+men man må tage hvad man kan få...
+
+
+
+Har nu givet op på livet, men lige før det blev jeg færdig med codejudge.
+
+Skal nu lave et program der viser, at row-wise multiplication er betydeligt
+hurtigere end coloumnwise operations i C:
+
+optimering 3:
+hurtige:
+0.000051, 0.000123, 0.000196, 0.000304, 0.000480, 0.000779, 0.001222, 0.000911, 0.001216, 0.001418
+langsomme:
+0.000065, 0.000149, 0.000212, 0.000442, 0.000809, 0.002127, 0.001752, 0.002028, 0.003289, 0.003663
+
+så ca. en gange 2 op ved større, tæt på samme i starten...
+
+
+Ændrer optimering til 0:
+hurtige:
+0.000041, 0.000152, 0.000362, 0.000279, 0.000471, 0.000586, 0.001691, 0.000916, 0.001268, 0.001498
+langsomme:
+0.000038, 0.000176, 0.000441, 0.000429, 0.000930, 0.001541, 0.002016, 0.002075, 0.003630, 0.003608
+ca. samme som optimering 3
+
+
+Ændrer optimering til 1:
+hurtige:
+0.000102, 0.000445, 0.001011, 0.001169, 0.000978, 0.001459, 0.001861, 0.002501, 0.003088, 0.003781
+langsomme:
+0.000040, 0.000181, 0.000414, 0.000313, 0.000996, 0.000963, 0.001368, 0.003983, 0.002782, 0.003672
+Den går den anden vej??? Meget ens tid, så dét...
+
+
+Ændrer optimering til 2:
+hurtige:
+0.000041, 0.000150, 0.000374, 0.000286, 0.000323, 0.000608, 0.000696, 0.000913, 0.001263, 0.001387
+langsomme:
+0.000038, 0.000176, 0.000696, 0.000340, 0.000550, 0.001417, 0.001350, 0.002396, 0.003353, 0.004330
+Op til 3x op i hastighed, men bliver større med datasættet.
