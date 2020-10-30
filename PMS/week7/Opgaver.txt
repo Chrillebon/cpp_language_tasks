@@ -6,6 +6,7 @@ for at få til at virke, skriv:
 
 Andre optimeringsmuligheder er 0,1,2,3,s
 som giver ingenting, mest alm, mere, mest, reducer størrelse af exe
+plottet i maple med: "semilogplot([seq([arraysize[i], flops[i]], i = 1 .. 10)])"
 
 Se billede execute_time.png:
 Koden optimerer indtil vi får så meget data, at vi skal tage fat i den i

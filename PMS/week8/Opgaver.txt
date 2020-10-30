@@ -1,0 +1,55 @@
+Hello_world v2
+
+Når det skal køres:
+
+$ gcc -fopenmp -o hello_omp hello_world_v2.c
+$ ./hello_omp
+
+kan inkludere eg. (OMP_NUM_THREADS=4)
+
+
+
+
+Nu til anden del: ---------------------
+
+Skal benytte flaget -f openmp i compilerflag
+
+For at benytte parallel programming, benyt
+#pragma omp parallel (argument)
+
+argumenter kan være:
+for -> ingen curly brackets - sæt lige før.
+private(t_id) -> giver thread number ved "omp_get_thread_num()"
+(shared(a,b,c)) -> best practice, ikke krav
+
+
+
+3) ------------------------------
+
+"init_data()" antager alpha=1.0, beta=0.0.
+allocate vector for reference solution as well
+
+compare results with "check_results()". First argument
+is a label to output.
+
+Other commands "malloc_2d()" and "free_2d()".
+
+
+"Number of cores on linux: $ lscpu (or $ cpucount)"
+
+
+Skal køre samme kode som før, og denne gang måle wall-time
+i stedet for cpu time, da vi skal se, at den forhåbentligt kører
+hurtigere (da parallel).
+
+Skal benytte wallclock time med "omp_get_wtime()"
+Kan benyttes som "clock()", men returnerer tid i "double" sekunder
+
+Kontrollér (i runtime) antal threads ved "$ OMP_NUM_THREADS=p ./hello_world"
+
+compiler optimization bedst ved compiler flag -O3
+
+
+4) -----------------------------
+
+"omp_dgemv_v2()"
