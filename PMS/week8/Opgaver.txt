@@ -45,7 +45,7 @@ hurtigere (da parallel).
 Skal benytte wallclock time med "omp_get_wtime()"
 Kan benyttes som "clock()", men returnerer tid i "double" sekunder
 
-Kontrollér (i runtime) antal threads ved "$ OMP_NUM_THREADS=p ./hello_world"
+Kontrollér (i runtime) antal threads ved "$ OMP_NUM_THREADS=p ./testing_parallel"
 
 compiler optimization bedst ved compiler flag -O3
 
@@ -53,3 +53,21 @@ compiler optimization bedst ved compiler flag -O3
 4) -----------------------------
 
 "omp_dgemv_v2()"
+
+Og hvordan skal den gøres parallel? Fandt svaret under løsninger
+
+
+
+sammenligning ----------------------------------
+
+Der er lavet en masse flotte grafer med de forskellige datasæt
+
+Det ses tydeligt, at v1 bare er bedre end v2 (med en enkelt undtagelse der er underlig for 1 thread)
+Vi ser også, at antallet af threads er en balance - alt efter hvor meget memory man skal igennem
+4 threads kan være hurtigere end alle andre, men prisen for at splitte work-load kan være for stor
+når man får meget data. Til gengæld, giver det med for lidt data slet ikke mening at splitte den!
+
+Vi kan også se prisen mht memory på især den grønne (også ret meget stiplet rød, hvor optimeringer ikke er effektive,
+da vi har skrevet "dårlig" kode ;) ), da man her kan se trappetrin, når vi går igennem forskellige registre og betaler prisen
+
+(forskellige registre indtegnet med stiplede linjer)

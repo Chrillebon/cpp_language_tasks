@@ -3,7 +3,7 @@ LDLIBS= -lm
 
 hello_world_v2:
 
-testing_parallel: omp_dgemv_v1.o datatools.o my_dgemv_v1.o
+testing_parallel: omp_dgemv_v1.o omp_dgemv_v2.o datatools.o
 
 .PHONY: clean
 clean:
