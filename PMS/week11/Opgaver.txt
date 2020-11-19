@@ -1,0 +1,29 @@
+Fibonacci sequence
+
+1)
+
+How many times is the function called if n=5
+
+f(0) og f(1) er kun dette kald
+f(2) er f(1) og f(0), som er 3
+f(3) er [f(2)[f(1), f(0)] og f(1)], er 5
+f(4) er f(3) og f(2), som er 1 + 5 + 3 = 9
+f(5) er f(4) og f(3), som er 1+9+5 = 15
+
+
+Kompleksiteten:
+Hver gang vi kører 1, kører den så 2. Dermed for hvert nyt led, kører den dobbelt
+så meget som før. Dermed er worst case 2^n.
+
+Her er plottet på logskala i filen: opg2.jpg
+
+
+Space complexity:
+Maximum number of stack calls: n, da den kører helt ned af én gren, før den går
+ned ad en anden gren. Vi kan se i res3, at det er præcis "n".
+
+
+
+Omskrivning: kompleksitet: n i tid, konstant i space (max 3 tal gemt)
+
+largest: fib(94) = 572466946
