@@ -1,0 +1,90 @@
+Så prøver vi lige et ældre sæt - 15 here we come
+
+Multiple choice:
+
+1) C.
+Da vi kan sende værdier igennem, men ikke som andet sprog hvor openlivb blev implimenteret, hvor det var call-by reference
+
+2) A.
+stdlib.h skal brues til malloc/calloc
+
+3) A.
+kørt kode og fundet svar
+
+4a) A.
+Staying in row with row major, is consecutive elements -> 1
+
+4b) C.
+Staying in column, requires to go through full row, thereby length of row: n
+
+5) C.
+Da vi skal have n*sizeof(double)
+
+6) D.
+Failing to release dynamically allocated memory, since no trash collection occur in C
+
+7) C.
+Since p is a pointer we need *(p).a which is p->a
+
+8) B.
+Antager temporally local, da vi ikke gemmer dens værdi ud over hvad den bringer til summen
+Temporally local: Når det er gemt i cache, kan man finde den hurtigt igen, så godt hvis man bruger det samme flere gange.
+Spacially local: Når ting står ved siden af hinanden i memory
+
+9) D.
+Cache miss handler om at forsøge at læse noget, som ikke er hentet endnu (i vores cache)
+Det er bedst beskrevet af^^
+
+10) B.
+Undefined behavior trying to access/change elements outside array size
+
+11) A.
+When parallelizing we require more resources to distribute and gather the tasks
+Wall time might still decrease, which is why we use it!
+
+12) A.
+Testing code
+
+13) [C.]
+Believe classes are objects, otherwise A.
+
+14) [A.]
+Det kan jeg jo ikke huske når vi ikke har haft det...
+Godt gæt
+
+15) C.
+complexity of inserting element at position 0:
+Has to create new list O(n), move all elements O(n) and insert new O(1)
+
+16a) D.
+Half precision float.
+Normal hvis d0=1, så ^^
+
+16b) B.
+Largest number: udregnet ud fra beskrivelse
+
+16c) B.
+Machine epsilon for half precision:
+epsilon = d_10=1*b⁰
+epsilon = d_10*2^(-10) = 2^(-10)
+
+17)
+tested by giving invalid pointer and invalid n, after these passed, I tried generic calculations
+(maybe try big dataset afterwards?)
+
+18a)
+Problems: We don't test for NULL pointers,
+we might run into trouble with the norm getting too big before taking sqrt
+Also, they 1-index, instead of 0-indexing...
+
+18b)
+Fixing problems:
+
+18c)
+We do use temporally locality since we reuse the values multiple times.
+Since we have sequentially located memory, we probably have spacially locality, since we go though all elements one by one
+
+19)
+see code polynomial
+derivative by multiplying coefficient by location, moving to new spots.
+Verifying by testing first errors, then basic test cases, then edge cases
