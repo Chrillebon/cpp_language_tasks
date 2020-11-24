@@ -88,3 +88,19 @@ Since we have sequentially located memory, we probably have spacially locality, 
 see code polynomial
 derivative by multiplying coefficient by location, moving to new spots.
 Verifying by testing first errors, then basic test cases, then edge cases
+
+20a+20b)
+implimenteret i binomial.c
+
+20c)
+First figuring out that invalid test cases return errors.
+Then testing that it works, then:
+Running dataset that tests limits of numerical implimentation (100 choose 6)
+
+
+20d)
+Time complexity of (2k choose k) in v1:
+I am running from k to 2k, and then I run from k to 1, thereby I add O(2k) = O(k) times
+
+Time complexity of (2k choose k) in v2:
+For each iteration I worst case add two more. Since this is recursive, we get O(2^(2k)) = O(2^k)
