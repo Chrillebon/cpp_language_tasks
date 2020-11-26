@@ -13,7 +13,13 @@ public:
   int compare(const Integer);          // comparing value with other Integer
   //int compare(const Integer&);
 
-  
+  Integer add(const Integer&);
+  Integer subtract(const Integer&);
+  Integer multiply(const Integer&);
+
+  Integer operator+(const Integer& num) {i += num.i; return *this;};
+  Integer operator-(const Integer& num) {i -= num.i; return *this;};
+  Integer operator*(const Integer& num) {i *= num.i; return *this;};
 };
 
 Integer::Integer(const Integer& other_int){
@@ -69,6 +75,26 @@ int Integer::get() {
 
 void Integer::print() {
   std::cout << i << '\n';
+  return;
+}
+
+Integer Integer::add(const Integer& num)
+{
+  i += num.i;
+  return *this;
+}
+
+
+Integer Integer::subtract(const Integer& num)
+{
+  i -= num.i;
+  return *this;
+}
+
+Integer Integer::multiply(const Integer& num)
+{
+  i *= num.i;
+  return *this;
 }
 
 int main(int argc, const char *argv[]) {
@@ -89,6 +115,35 @@ int main(int argc, const char *argv[]) {
   std::cout << "comparing values: " <<a.compare(c)<< '\n';
   std::cout << "That is, a is less than c!" << '\n';
 
+  Integer *val;
+  val = (Integer *)malloc(10*sizeof(Integer));
+  for(int i=0;i<10;i++)
+  {
+    val[i].set(i);
+  }
+  Integer tmp(val[4]);
+  //std::cout << "4x5 = " <<tmp.multiply(val[5])<< '\n';
+  Integer res;
+  //val[8].add(val[7].multiply(val[5]))
+  /*tmp.set(val[4].get());
+  tmp.multiply(val[5]);
+  tmp.multiply(val[5]);
+  tmp.multiply(val[5]);
+  res.add(tmp);
+  tmp.set(6);
+  tmp.multiply(val[5]);
+  tmp.multiply(val[5]);
+  res.add(tmp);
+  tmp.set(7);
+  tmp.multiply(val[5]);
+  res.add(tmp);
+  tmp.set(8);
+  res.add(tmp);
+  std::cout << "4*5³+6*5²+7*5+8 = " <<res.get() << '\n';
+
+  std::cout << "YAY!" << (res.add(val[8])).get() <<'\n';*/
+  (val[8] + val[7]*val[5] + (val[6]*val[5])*val[5] + ((val[4]*val[5])*val[5])*val[5]).print();
+  //val[8].add(  val[7].multiply(val[5])  ).add(  (val[6].multiply(val[5])).multiply(val[5])  ).add(  ((val[4].multiply(val[5])).multiply(val[5])).multiply(val[5])  ).print();
   // testing that private!
   //a.i = 2;
   // Compiler error...
