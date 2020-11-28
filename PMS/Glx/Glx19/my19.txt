@@ -46,9 +46,34 @@ Memory leaks er i alt...
 8) B.
 :: operator, står i bogen -> space resolution
 
-9) A.
-Linear i et loglog plot -> O(n)
+9) B.
+Slope af kurven er eksponenten k i O(n^k). Da hældningen er 3/2
 
-//////////////////////////////
 10a) B.
-memory allocation of malloc -> dynamic
+Malloc er dynamic memory allocation
+
+10b) A.
+Når man inde i en funktion laver en ny variabel, er der automatisk allokering her
+
+
+11a) D.
+Vi skal i rowmajor skalere 3 elementer, startende på plads [1,1]
+Dermed skal vi +5 før vi starter, stride 1.
+
+11b) B.
+Hvilke elementer bliver skaleret. 4 elementer skaleres med 2 fra plads [0,1]
+med stride 2 -> A12, A14, A22, A24
+
+12) B.
+Cache er betydeligt hurtigere end main memory.
+
+13)
+Implimentering af y <- A^Tx + y [sparse]
+Testet mod maple med en 3x4 matrix A
+
+14)
+Har egentligt lavet den før, men laver endnu en poisson-udregner!
+tester mod maple:
+pois(3,3) = 0.224042 vs 0.2240418077
+pois(100,95) = 0.035025 vs 0.03502523787
+We good!
