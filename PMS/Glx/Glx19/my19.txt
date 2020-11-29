@@ -77,3 +77,7 @@ tester mod maple:
 pois(3,3) = 0.224042 vs 0.2240418077
 pois(100,95) = 0.035025 vs 0.03502523787
 We good!
+
+15)
+Ser, at man bare kan finde summen af tal, og gange -1/n på summen, og lægge til alle tal
+tester med {1,2,3} -> {-1,0,1}
