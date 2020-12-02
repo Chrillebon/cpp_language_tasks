@@ -1,0 +1,83 @@
+1a) A.
+Since we have higher precision with starting 0
+
+1b) B.
+Since u splits the difference between 1 and next decimal
+
+2a) C.
+Relative condition number:
+x f'(x) / |f(x)| = (2*a*x²+bx)/|ax²+bx+c|
+
+2b) D.
+nævner bliver nul når x in {-2,0}
+
+3a) D.
+relative condition number
+maple
+
+3b) B.
+maple
+
+3c) B.
+Sum can catastrophic cancel.
+
+4a) B.
+multiple recursion, since two is called
+
+4b) C.
+2^k time, since double function calls
+k er max dybde af træet
+
+5a) A.
+Da vi tilføjer til den samme værdi flere gange!
+
+5b) A.
+Spacially locality når vi går igennem én efter 1.
+
+6a) C.
+3/4 af programmet kan paralelliseres
+
+6b) A.
+80/(20+60/9) = 3
+
+7) B.
+Memory leaks er i alt...
+
+8) B.
+:: operator, står i bogen -> space resolution
+
+9) B.
+Slope af kurven er eksponenten k i O(n^k). Da hældningen er 3/2
+
+10a) B.
+Malloc er dynamic memory allocation
+
+10b) A.
+Når man inde i en funktion laver en ny variabel, er der automatisk allokering her
+
+
+11a) D.
+Vi skal i rowmajor skalere 3 elementer, startende på plads [1,1]
+Dermed skal vi +5 før vi starter, stride 1.
+
+11b) B.
+Hvilke elementer bliver skaleret. 4 elementer skaleres med 2 fra plads [0,1]
+med stride 2 -> A12, A14, A22, A24
+
+12) B.
+Cache er betydeligt hurtigere end main memory.
+
+13)
+Implimentering af y <- A^Tx + y [sparse]
+Testet mod maple med en 3x4 matrix A
+
+14)
+Har egentligt lavet den før, men laver endnu en poisson-udregner!
+tester mod maple:
+pois(3,3) = 0.224042 vs 0.2240418077
+pois(100,95) = 0.035025 vs 0.03502523787
+We good!
+
+15)
+Ser, at man bare kan finde summen af tal, og gange -1/n på summen, og lægge til alle tal
+tester med {1,2,3} -> {-1,0,1}

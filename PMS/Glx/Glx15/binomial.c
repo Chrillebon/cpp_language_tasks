@@ -19,8 +19,8 @@ long binomial_v1(long n, long k)
     /*if(res * i < res)
     {
       return -1;
-    }
-    res *= i;*/
+    }*/
+    res *= i;
 
     res2 += log(i);
   }
@@ -55,7 +55,7 @@ int main()
 {
   // 100 choose 6 crashes longs...
   printf("testing v1: %ld\n", binomial_v1(100,6));
-  //printf("testing v2: %ld\n", binomial_v2(100,6));
+  printf("testing v2: %ld\n", binomial_v2(100,6));
 
   // v1 er vandvittigt langsom, til gengæld får den stort svar...
   return 0;
