@@ -5,6 +5,7 @@ LDFLAGS=
 LDLIBS=
 LINK.o=$(CXX) $(LDFLAGS)
 
+vectormanip:
 
 .PHONY: clean
 clean:

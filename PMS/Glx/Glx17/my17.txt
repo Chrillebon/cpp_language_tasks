@@ -1,0 +1,48 @@
+1a) A.
+Da vi ikke ligger tal sammen, gælder det for floats
+
+1b) B.
+Når vi ligger tal sammen, kan vi ikke rykke rundt på dem...
+
+2) A.
+abs(x*f'(x)/f(x))=abs(x*sin/cos)=abs(x*tan)
+
+3) E.
+Worst case relative error for sequential summation
+da nu<0.1 => theta = 1.06*nu
+1.06*nu*500/0.01 = 53000*nu
+
+4) C.
+Der er meget galt med funktionen, blandt andet er der memory leak
+
+5) D.
+Bedre locallity giver mindre cache miss, da vi kan bruge den hentede
+data mere effektivt.
+
+6a) C.
+T(1) = 100, T(4) = 37
+indsætter i nævneren
+(f/4)*100+(1-f)*100 = 37 => f = 21/25 = 0.84
+
+6b) B.
+Theoretical execution time on 8 processors:
+(f/8)*100+(1-f)*100 = 26.50000000
+
+7a) A.
+Condition number: maple
+
+7b) D.
+catastrophic cancellation i f, når man indsætter
+
+8a) B.
+unit round off = 2^(-(p-1)) / 2 = 2^(-p)
+= 2^(-11)
+
+8b) C.
+largest n, where we can guarentee relative error of at most 0.1
+da alle er nonnegative er tæller lig med nævneren.
+Dermed skal vi løse:
+1.06*n*2^(-11) = 0.1
+n = 193.2
+
+9)
