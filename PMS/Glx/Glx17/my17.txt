@@ -33,6 +33,7 @@ Condition number: maple
 
 7b) D.
 catastrophic cancellation i f, når man indsætter
+Laf være med at trække 2 tal fra hinanden der næsten er ens
 
 8a) B.
 unit round off = 2^(-(p-1)) / 2 = 2^(-p)
@@ -45,4 +46,43 @@ Dermed skal vi løse:
 1.06*n*2^(-11) = 0.1
 n = 193.2
 
-9)
+9a) B.
+Recursive sum, kalder 2 nye funktioner for hver,
+Dermed multiple recursion
+
+9b) C.
+Hver gang man splitter den, tager man summen af de to halvdele af listen
+Dette vil sige, at man skal splitte listen log_2(n) gange.
+i lag k har vi 2^k lister som vi splitter.
+til lag log(n), hvor vi har n lister.
+Mængden af lister (antal gange vi skal gøre noget):
+n + n/2 + n/4 + n/8 + n/16 = 2n (af mat2) = O(n)
+
+Dermed er der O(n) time complexity
+Samt log(n) space (Vi er max log(n) dyb) ->
+
+9c) B.
+
+10) D.
+Time complexity fra plot:
+Finder hældningen: ca. 3 gange op  for hver gang den går 1 ud.
+Dermed O(n^3)
+
+11) A.
+Loop unrolling reducerer execution time, da vi lettere kan paralellisere
+
+12) C.
+int& er en reference til en int
+
+13) D.
+std::vector er et dynamisk array, kig på dokumentation
+
+14) B.
+Vil implimenteringen virke?
+Finder prikproduktet mellem x og y, sammenligner med hvad???
+Vi sammenligner med den absolutte fejl. Hvis alle er lige under (eller på) epsilon
+ved vi, at |Ŝ_N - S_N| <= 1.06*n*sum(x_i) <= 1.06*n*sum(epsilon)
+= 1.06*n^2*epsilon
+Da dette kan være større end det givne, selv inden for numeriske grænser,
+sammenligner vi med noget for lille
+[Usikker herpå]
