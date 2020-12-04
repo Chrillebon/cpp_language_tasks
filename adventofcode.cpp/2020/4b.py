@@ -69,6 +69,7 @@ for i in range(len(passport)):
                     if(tmp[0] == "*"):
                         tmp = tmp.replace("*", "")
                         goodhcl = 0
+                        print("f6 --------------", tmp)
                         if(len(tmp) == 6):
                             for k in range(6):
                                 if((ord(tmp[k]) >= 48 and ord(tmp[k]) <=57) or (ord(tmp[k]) >= 97 and ord(tmp[k]) <=102)):
@@ -83,13 +84,13 @@ for i in range(len(passport)):
                             del require[u]
                             continue
                 elif(require[u] == "pid"):
-                    if(tmp[0] == "0" and len(tmp) == 9):
+                    if(len(tmp) == 9):
                         goodpid = 0
                         for k in range(9):
                             if(ord(tmp[k]) >= 48 and ord(tmp[k]) <=57):
                                 goodpid += 1
                         if(goodpid == 9):
-                            print("f10")
+                            print("f8")
                             del require[u]
                             continue
     print("denne klarede ", len(require))
