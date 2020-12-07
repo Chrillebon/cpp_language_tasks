@@ -1,0 +1,102 @@
+Flere opgaver er forklaret ved at køre kode, som ligger i testdoc.c!
+
+
+
+
+1a) B.
+Det der med at ligge floats sammen...
+
+1b) B.
+eksempel der ikke holder:
+int testval = 2147483647;
+printf("%d\n", (testval-testval)+7);
+printf("%d\n", testval-(testval+7));
+
+2) D.
+Catastrophic cancellation når man trækker tal fra hinanden der er tæt på hinanden
+
+3a) B.
+I ydre loop, bruges værdien kun 1 gang per iteration....
+
+3b) A.
+Spacially local da vi tager de næste værdier efter hver iteration
+
+4) B.
+Cache altid hurtigere...
+
+5) D.
+Paralellisering max speedup: 100%/20% = 5
+
+6) B.
+Memoryleak er i alt, inklusiv disse eksamenssæt...
+
+7a) A.
+Single recursion
+
+7b) B.
+Da vi sænker den 1 per iteration, er dette O(n)
+
+7c) B.
+For single recursion er space det samme som time!
+
+8) B.
+Templates i c++, skal næsten referere til, at c++ er objektorienteret
+Ville nok tjekke efter i bogen ved eksamen.
+
+9) B.
+Vi laver en pointer til en adresse der bliver fjernet efter denne funktion er færdig
+En meget dårlig ide... Eksempel der viser dette her:
+double *dontfail = quad_eval(1,2,3,4);
+double *dontfail2 = quad_eval(5,6,7,8);
+// Har nu overskrevet gamle... giver samme resultat...
+printf("%lf @ %p vs %lf @ %p\n", *dontfail, dontfail, *dontfail2, dontfail2);
+printf("Skulle gerne have været forskellige^^\n");
+
+10) B.
+Dynamic memory faster??? Kan den måske være, men kan forestille mig, at
+compileren kan optimere hvis den ved hvor stor en mængde data den skal allokere
+måske?
+
+11) B.
+Genbrug meget?
+
+12) B.
+øhm... (p++) er en meget dårlig idé her...
+
+13) A.
+endianness
+De kan ikke stave... der er 2 n'er...
+Godt at vide hvis man deler data på tværs af computere, som kan have forskellige
+bit orderings, og dermed forstå tal anderledes...
+
+14a) D.
+Normal er når vi rykker, så vi har så mange decimaler som muligt
+
+14b) B.
+Smallest number greater than 1.0: 1 + epsilon = 1+b^(-n)
+
+14c) C.
+Largest number smaller than 1, altså har vi d0=b-1, og eksponenten er 1 mindre
+Vi finder altså, at vi har højere præcision netop her
+Hvis vi skal have højere præcision end før, får vi 1-b^(-(n+1))
+
+15) B.
+Altså den er 0-indexeret...
+
+16) D.
+hvad med mat_arr[1].m = 4? Ikke alt det gøjl!
+
+
+
+17)
+Med en god idé, bliver den lineær i komplexitet!
+tested med {1,1,1,1,1,1,1} = {1,2,3,4,5,6,7}
+
+18)
+Genbrug meget?
+
+19)
+testede ikke sådan rigtigt, så tag med et gran salt...
+
+20)
+Benyttede absolute error til at bestemme om de var ortogonale.

@@ -1,5 +1,5 @@
-1a) A.
-Da vi ikke ligger tal sammen, gælder det for floats
+1a) B.
+Gælder faktisk ikke... Se artikel: https://docs.oracle.com/cd/E19957-01/806-3568/ncg_goldberg.html
 
 1b) B.
 Når vi ligger tal sammen, kan vi ikke rykke rundt på dem...
@@ -86,3 +86,8 @@ ved vi, at |Ŝ_N - S_N| <= 1.06*n*sum(x_i) <= 1.06*n*sum(epsilon)
 Da dette kan være større end det givne, selv inden for numeriske grænser,
 sammenligner vi med noget for lille
 [Usikker herpå]
+
+
+17)
+Time complexity of Tx: going through each row, and for each row, go through each
+value => O(n²)
