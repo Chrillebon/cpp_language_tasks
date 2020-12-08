@@ -27,8 +27,8 @@ double * init_array(size_t n, double h) {
 int main()
 {
   int testval = 2147483647;
-  printf("%d\n", (testval-testval)+7);
-  printf("%d\n", testval-(testval+7));
+  printf("%d\n", (testval-testval)-7);
+  printf("%d\n", testval+(-testval-7));
 
   // big problem with function:
   double *dontfail = quad_eval(1,2,3,4);

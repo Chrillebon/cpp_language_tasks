@@ -1,0 +1,67 @@
+Har bare løbet igennem dette sæt, tag alt med et gran salt...
+
+
+1a) A.
+tror jeg...
+
+1b) B.
+man må ikke ligge tal sammen...
+
+2) A.
+epsilon = b^(p-1), som er binary64
+
+3a) D.
+condition number i maple: |x*f'(x)|/|f(x)|
+
+3b) C.
+Catrstrofic cancellation when x close to 0, so exp(x) close to 1
+
+4) D.
+Buer lidt op, men ca. n²
+
+5a) C.
+double pointer er pointers til pointers
+
+5b) D.
+Hvad med pA[i][j]
+
+6a) D.
+et element fra en klasse er et objekt
+
+6b) B.
+enten A eller B
+
+6c) C.
+at gøre noget inden for en klasse er en metode
+
+7) C.
+lokal variabel returneret...
+
+8a1) A.
+rekursiv polynomie
+single recursion
+
+8a2) A.
+
+8b1) B.
+
+8b2) A.
+maxdybde er n, da den ikke splitter
+
+9a) C.
+parallel fraction: 20/32
+
+9b) C.
+theoretical improvement over 4 cores:
+32/(12+5) = 32/17
+
+10a) B.
+scaling correct, stride 3, 4 later than start
+
+10b) C.
+starter 1 væk (1 ned ad en column), stride 2:
+
+11) B.
+worst case relative error
+alle elementer er positive. Dermed bliver det ca.
+rel_error ≃ 2*u*1 = 2*u

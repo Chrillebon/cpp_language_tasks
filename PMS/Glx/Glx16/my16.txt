@@ -39,9 +39,8 @@ Da vi sænker den 1 per iteration, er dette O(n)
 7c) B.
 For single recursion er space det samme som time!
 
-8) B.
-Templates i c++, skal næsten referere til, at c++ er objektorienteret
-Ville nok tjekke efter i bogen ved eksamen.
+8) C.
+Står i slides
 
 9) B.
 Vi laver en pointer til en adresse der bliver fjernet efter denne funktion er færdig
