@@ -37,8 +37,10 @@ int householder(const double *v, double *x, unsigned int n){
   {
     return -1;
   }
+  double rowsum = 0;
   for(int i=0;i<n;i++)
   {
+    rowsum += v[i]*x[i];
     tmpx[i] = x[i];
   }
 
@@ -46,10 +48,7 @@ int householder(const double *v, double *x, unsigned int n){
   for(int i=0;i<n;i++)
   {
     loopk = 2*v[i]/norm2;
-    for(int o=0;o<n;o++)
-    {
-      tmpx[i] -= loopk*v[o]*x[o];
-    }
+    tmpx[i] -= loopk*rowsum;
   }
 
   for(int i=0;i<n;i++)
@@ -74,3 +73,6 @@ int main()
   }
   return 0;
 }
+/*
+[2.354839, -2741935, 0.967742]
+*/

@@ -89,5 +89,4 @@ sammenligner vi med noget for lille
 
 
 17)
-Time complexity of Tx: going through each row, and for each row, go through each
-value => O(n²)
+Skarp optimering: O(n)

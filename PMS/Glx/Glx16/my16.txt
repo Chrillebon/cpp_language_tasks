@@ -6,7 +6,7 @@ Flere opgaver er forklaret ved at køre kode, som ligger i testdoc.c!
 1a) B.
 Det der med at ligge floats sammen...
 
-1b) B.
+1b) B. (A)
 eksempel der ikke holder:
 int testval = 2147483647;
 printf("%d\n", (testval-testval)+7);

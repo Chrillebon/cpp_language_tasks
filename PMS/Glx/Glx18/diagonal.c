@@ -16,8 +16,12 @@ int dhhmv(int n, const double * u, double * x){
   {
     return -1;
   }
+  double rowsum = 0;
   double *tmpx = (double*)malloc(n*sizeof(double));
-  for(int i=0;i<n;i++){ tmpx[i] = x[i]; }
+  for(int i=0;i<n;i++){
+    rowsum += x[i]*u[i];
+    tmpx[i] = x[i];
+  }
   // J matrix on x:
   for(int i=1;i<n;i++)
   {
@@ -29,10 +33,7 @@ int dhhmv(int n, const double * u, double * x){
   for(int i=0;i<n;i++)        // row-wise
   {
     tmpk = 2*u[i]/uJu;
-    for(int o=0;o<n;o++)
-    {
-      tmpx[i] -= tmpk*x[o]*u[o];
-    }
+    tmpx[i] -= tmpk*rowsum;
   }
 
   for(int i=0;i<n;i++)
@@ -58,9 +59,12 @@ int dhhsv(int n, const double * u, double * x)
   {
     return -1;
   }
+  double rowsum = -2*x[0]*u[0]; // first has to be -1, so preparing for loop
   double *tmpx = (double*)malloc(n*sizeof(double));
-  for(int i=0;i<n;i++){ tmpx[i] = x[i]; }
-  // J matrix on x:
+  for(int i=0;i<n;i++){
+    rowsum += x[i]*u[i];
+    tmpx[i] = x[i];
+  }  // J matrix on x:
   for(int i=1;i<n;i++)
   {
     tmpx[i] *= -1;
@@ -71,16 +75,13 @@ int dhhsv(int n, const double * u, double * x)
   for(int i=0;i<n;i++)        // row-wise
   {
     tmpk = 2*u[i]/uJu;
-    for(int o=0;o<n;o++)
+    if(i == 0)
     {
-      if((i == 0 && o != 0) || (i != 0 && o == 0))
-      {
-        tmpx[i] += tmpk*x[o]*u[o];
-      }
-      else
-      {
-        tmpx[i] -= tmpk*x[o]*u[o];
-      }
+      tmpx[i] += tmpk*rowsum;
+    }
+    else
+    {
+      tmpx[i] -= tmpk*rowsum;
     }
   }
 
@@ -115,3 +116,15 @@ int main()
   }
   return 0;
 }
+
+
+/*
+-0.55555555
+3.4444444
+-0.66666667
+*/
+/*
+2.851852
+4.481481
+-0.222222
+*/

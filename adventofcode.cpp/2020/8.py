@@ -2,6 +2,7 @@ data = "acc +3;jmp +599;nop +311;jmp +605;acc -3;acc +50;acc -6;jmp +461;jmp -4;
 
 accumulator = 0
 index = 0
+time = 0
 # Dette er den type opgave jeg har ventet paa!!!
 
 allcommands = data.split(";")
@@ -9,6 +10,8 @@ history = [-1 for i in range(len(allcommands))]
 
 
 def exe_instruction(cmd):
+    global accumulator
+    global index
     cmd = cmd.split(" ")
     val = cmd[1]
     todo = cmd[0]
@@ -26,7 +29,8 @@ def exe_instruction(cmd):
 
 
 def run_program():
-    time = 0
+    global time
+    global index
     while(1):
         if(history[index] != -1):
             print("LOOP-de-LOOP!")
@@ -37,7 +41,6 @@ def run_program():
             time += 1
     return -1
 
-print(time)
 run_program()
 
 print("naar faerdig har accumulator vaerdien: ", accumulator)

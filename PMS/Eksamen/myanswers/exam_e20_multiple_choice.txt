@@ -1,0 +1,35 @@
+02635-E20 Final exam: multiple choice answers
+
+Student:
+
+    Name: Christian Mikkelstrup
+    Student ID: s194345
+
+Instructions:
+
+    Write your answers to the multiple choice questions below. Each answer should
+    be a single letter (either lowercase or uppercase).
+
+Answers:
+
+    1a: B
+    1b: B
+    2: C
+    3: B
+    4: D
+    5a: B
+    5b: B
+    6: C
+    7a: C
+    7b: B
+    8a: A
+    8b: B
+    9a: A
+    9b: B
+    10: B
+    11: B
+    12a: B
+    12b: C
+    13: D
+    14a: B
+    14b: A
