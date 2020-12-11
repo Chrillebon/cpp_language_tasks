@@ -12,9 +12,9 @@ int darsv(int n, double * a, double * b, double * x);
 
 int main()
 {
-  double testvals15[] = {0.0001, M_PI+__DBL_EPSILON__/2,-M_PI+__DBL_EPSILON__*4, 2, 1, M_PI/2, M_PI-(1e-10), 0, __DBL_EPSILON__*2};
+  double testvals15[] = {0.0001, M_PI+__DBL_EPSILON__/2,-M_PI+__DBL_EPSILON__*4, 2, 1, M_PI/2, M_PI-(1e-10), 0, __DBL_EPSILON__*2, 1000};
   printf("testing 15:\n");
-  for(int i=0;i<9;i++)
+  for(int i=0;i<10;i++)
   {
     printf("f(%lf) = %.20lf\n", testvals15[i], feval(testvals15[i]));
   }
