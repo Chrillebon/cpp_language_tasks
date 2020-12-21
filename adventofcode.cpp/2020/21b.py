@@ -55,7 +55,18 @@ for i in range(len(list(all_pos_bad))):
 """
 af ovenstående ved vi:
 
+znqbr indeholder wheat
+txzv indeholder soy
+tjlz indeholder eggs
+gtjmd indeholder fish
+gpgrb indeholder dairy
+pfdkkzp indeholder peanuts
+spbxz indeholder nuts
+xcfpc indeholder shellfish
 
+
+sorteret giver dette:
+gpgrb,tjlz,gtjmd,spbxz,pfdkkzp,xcfpc,txzv,znqbr
 
 
 
