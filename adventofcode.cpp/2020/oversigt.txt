@@ -1,0 +1,56 @@
+1 twosum og threesum problemer!
+
+2 tjek om simple regler passer op imod kodeord
+
+3 får du givet retningerne du skal gå (i stedet for at finde dem selv), og så skal du sige hvor mange
+træer du støder ind i på vejen
+
+4 skal du tjekke en masse pas op imod en masse regler, og så se om dit går igennem
+
+5 skal du finde dit flysæde ud fra hvor andre sidder
+
+6 skal vi finde ud af hvor mange af familierne der skal have noget tjekket af grænsekontrol
+Spørgsmålet er så bare, om det er én i familien eller alle i familien der skal have noget tjekket
+
+7 er dagen hvor vi havde tasker i tasker i tasker. Enten find ud af hvor mange tasker du skal købe, eller
+hvor mange forskellige tasker der kan indeholde din taske i guld!?
+
+8 havde jeg håbet var som computeren sidste år. Kommandoer der springer frem og tilbage fra en game-console
+
+9 skal finde tal ud af de sidste 25 tal, der summer til det nye tal
+
+10 placering af adapters of kombinatiorik, der ved grafteori beskriver antal muligheder
+
+11 er pladser i venteområdet i lufthavnen der bliver forladt og optaget efter hver iteration
+
+12 er båden der skal sejle væk
+
+13 er den mest matematiske. Man skal vide noget om mindst fælles multiplum, den homogene løsningsmængde
+og lige have n gode idéer for at komme frem til den partikulære løsning...
+
+14 skal vi gemme tal ind på forskellige memoryadresser. Vi laver så bitwise operationer på både tallet der Skal
+gemmes og adressen, hvorved vi ender med nogle gange rigtigt meget at lave.
+
+15 er simulering ud fra startværdier. Da vi kun skal simulere 30.000.000 iterationer frem
+kan den bare brute-forces
+
+16 er en masse togbilletter, hvor man ud fra intervaller, skal finde ud af hvilke pladser, som
+alle opfylder disse regler. Problemet kommer, da stort set alle regler er opfyldt for alle,
+og man må udelukke reglerne én ad gangen
+
+17 er et 3d (17b bliver 4d) game of life/0-player spil hvor man simulerer hvordan blokke udvikler sig
+meget flotte visualiseringer på aoc's reddit
+
+18 får man givet regnestykker i text og skal selv skrive programmet der regner dem ud
+Der er dog andre regneregler i denne nisse-verden!
+
+19 er der regler der skal opfylde regler der skal matches til forskellig text.
+19b kommer der loops i disse regler og man skal holde tungen lige i munden for at sørge for, at man ved hvad man laver
+nok mest programmerings-teknisk indtil videre.
+
+20 er et puzzlespil, hvor man skal sammensætte 144 brikker. Heldigvis er hver side på brikken unik.
+20b er det længste program der er skrevet indtil videre, men et kæmpe ad-hoc problem...
+
+21 havde du en liste af ingredienser og allergener. Spørgsmålet var så, om du først kunne finde
+de sikre ingredienser, og om du så til sidst kunne finde præcis hvilke ingredienser der indeholdt
+denne allergene. Dejlig rolig efter den 20...
