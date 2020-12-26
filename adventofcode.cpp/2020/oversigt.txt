@@ -54,3 +54,13 @@ nok mest programmerings-teknisk indtil videre.
 21 havde du en liste af ingredienser og allergener. Spørgsmålet var så, om du først kunne finde
 de sikre ingredienser, og om du så til sidst kunne finde præcis hvilke ingredienser der indeholdt
 denne allergene. Dejlig rolig efter den 20...
+
+22 spiller vi krig med 50 forskellige kort. Del b spilles rekursiv krig, hvor man, hvis muligt, afgør
+en kamp ved at spille med resten af kortene.
+
+23 skal man rykke rundt på kopper, først 10, så 10 mio...
+
+24 skal man arbejde med fliser der er 6-kantede, og dermed skal man være kreativ med hvordan man
+bevæger sig rundt imellem dem. I del 2 flippes de efter regler (game of life)
+
+25 skal man "krakke" en simpel kode. Ret ligetil, men en fin afslutning på AOC2020
