@@ -7,14 +7,15 @@ vector<vector<int>> vel(4, vector<int>(3)); //The velocity of the four moons, x,
 vector<vector<int>> pos{{7,10,17},{-2,7,0},{12,5,12},{5,-8,6}}; //the posision of the four moons, x,y,z
 vector<vector<int>> start = pos;
 
-int same()
+int same(int axis)
 {
+  // 0 for x axis, 1 for y axis, 2 for z axis
   int c=0;
   for(int i=0;i<4;i++)
   {
-    if(pos[i][0] == start[i][0] && pos[i][1] == start[i][1] && pos[i][2] == start[i][2])
+    if(pos[i][axis] == start[i][axis])
     {
-      if(vel[i][0] == 0 && vel[i][1] == 0 && vel[i][2] == 0)
+      if(vel[i][axis] == 0)
       {
         c++;
       }
@@ -93,7 +94,11 @@ int main()
   move();
   steps++;
 
-  while(!same() || steps < 0)
+  // Skift argument i same mellem 0, 1 og 2
+  // Dette gøres, da x, y og z er uafhængige af hinanden,
+  // Hvormed vi kan regne os til samlet tid før gentagelse
+
+  while(!same(2) || steps < 0)
   {
     if(steps % 1000000 == 0)
     {
@@ -109,5 +114,14 @@ int main()
     steps++;
   }
   disp(steps);
+
+  /*
+  x-axis tager 28482 iterationer før gentagelse
+  y-axis tager 231614 iterationer før gentagelse
+  z-axis tager 193052 iterationer før gentagelse
+
+  Mindst fælles multiplum er:
+  318382803780324
+  */
   return 0;
 }
